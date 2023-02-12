@@ -4,8 +4,8 @@ import json
 from datetime import date
 
 fecha = date.today()
-API_key = '7OeqySIO35MjJfT7'
-API_secret = 'NeqrSKFMlDoaZvo6kCxSvfHzkuT4JMcw'
+API_key = '3vMUeI4ryQUclm8H'
+API_secret = 'elvCTfZX9MvlGOPKkCFzkK0TAU6WheEw'
 
 ##################################################################################################################
 #SECCIÓN EN LA QUE SE EXTRAEN Y SE MODIFICAN LOS DATOS DE LA CLASIFICACIÓN DE LA API PARA TRATARLOS ADECUADAMENTE#
@@ -44,7 +44,7 @@ def obtenPartidos(equipo):
     elif equipo == 'Athletic Bilbao':
         idEquipo = 24
     elif equipo == 'Atletico Madrid':
-        idEquipo = 43
+        idEquipo = 26
     elif equipo == 'Barcelona':
         idEquipo = 21
     elif equipo == 'Cadiz':
@@ -89,6 +89,25 @@ def obtenPartidos(equipo):
     listaDatosPartidos = diccionarioDatos['match']
     return listaDatosPartidos
 
+#Función que devuelve el numero de goles a favor que ha marcado el equipo con mas goles a favor de la clasificacion
+def golesFavorMax(listaClasificacion):
+    i = 0
+    num = 0
+    while i<len(listaClasificacion):
+        if int(listaClasificacion[i].get('goals_scored')) > num:
+            num = int(listaClasificacion[i].get('goals_scored'))
+        i += 1
+    return int(num)
+
+#Función que devuelve el numero de goles a favor que ha recibido el equipo con mas goles en contra de la clasificacion
+def golesContraMax(listaClasificacion):
+    i = 0
+    num = 0
+    while i<len(listaClasificacion):
+        if int(listaClasificacion[i].get('goals_conceded')) > num:
+            num = int(listaClasificacion[i].get('goals_conceded'))
+        i += 1
+    return int(num)
 
 #Función que crea la racha del equipo segun los partidos jugados en el ultimo mes
 def creaRacha(equipo, listaPartidos):
@@ -115,15 +134,19 @@ def creaRacha(equipo, listaPartidos):
 def puntuacion(equipo):
     i = 0
     datosPartidos = obtenPartidos(equipo)
+    numPartidosJugadosUltimoMes = len(datosPartidos)
     puntRacha = float(creaRacha(equipo, datosPartidos))
+    maximosGolesFavor = golesFavorMax(listaClasificacion)
+    maximosgolesContra = golesContraMax(listaClasificacion)
     while i<len(listaClasificacion):
         if listaClasificacion[i].get('name') == equipo:
-            puntos = int(listaClasificacion[i].get('points'))
+            puesto = int(listaClasificacion[i].get('rank'))
             golesFavor = int(listaClasificacion[i].get('goals_scored'))
             golesContra = int(listaClasificacion[i].get('goals_conceded'))
             break
         i += 1
-    puntuacionFinal = puntos + golesFavor + golesContra + puntRacha
+    puestoEquilibrado = 21 - puesto
+    puntuacionFinal = puestoEquilibrado/20 * 0.35 + golesFavor/maximosGolesFavor * 0.15 + golesContra/maximosgolesContra * 0.15 + puntRacha/numPartidosJugadosUltimoMes * 0.35
     return puntuacionFinal
 
 ############################################## FIN SECCION #####################################################
@@ -142,16 +165,14 @@ def home():
 def funcPredecir():    
     equipoLocal = str(request.form['equipoLocal'])
     equipoVisitante = str(request.form['equipoVisitante'])
-
-    puntuacionLocal = puntuacion(equipoLocal) # Hay que añadirle algun punto por jugar de local
+    #Hay que crear una excepción para que de error en caso de se seleccione dos veces el mismo equipo
+    puntuacionLocal = puntuacion(equipoLocal) + 0.15 # Hay que añadirle algun punto por jugar de local
     puntuacionVisitante = puntuacion(equipoVisitante)
 
     diferenciaPuntos = puntuacionLocal - puntuacionVisitante
     puntosAbsolutos = abs(diferenciaPuntos)
 
-    #Hay que crear una excepción para que de error en caso de se seleccione dos veces el mismo equipo
-
-    if puntosAbsolutos<10:
+    if puntosAbsolutos <= 0.15:
         return render_template('index.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} terminará en EMPATE.')
     else:
         if puntuacionLocal>puntuacionVisitante:
