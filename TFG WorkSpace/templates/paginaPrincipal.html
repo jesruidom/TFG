@@ -2,20 +2,75 @@
 <html>
     <head>
         <meta charset="utf-8">
+        
         <title>Web TFG</title>
     </head>
+
     <body>
-        <div class="menu">
-            <div class="menu__cabecera">
-                <p class="titulo-proyecto">MENU PRINCIPAL</p>
-                <form action="/predecir" method="post">
+        <div class="cabecera">
+            <div class="titulo-proyecto">WEB TFG</div>
+            <div class="botones">
+                <form class="boton-predecir" action="/predecir" method="post">
                     <button type="submit" class="btn-outline-success">Ir a predecir partido</button>
-    
                 </form>
+
                 <form action="/racha" method="post">
                     <button type="submit" class="btn-outline-success">Ir a calcular la racha</button>
-    
                 </form>
+            </div>      
+            
         </div>
     </body>
 </html>
+
+<style>
+
+:root {
+  --color-cabecera: hsl(3, 0%, 10%);
+  --color-cabecera-claro: hsl(3, 0%, 60%);
+  --color-texto-cabecera: hsl(3, 0%, 100%);
+  --color-lienzo: hsl(3, 0%, 100%);
+
+  --fuente-cabecera: sans-serif;
+  /* --fuente-tamaño: 16px; */
+}
+  
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+  /* outline: 1px solid red; */
+}
+
+.cabecera {
+  padding: 1rem 1rem;
+
+  font-family: var(--fuente-cabecera);
+  background-color: var(--color-cabecera);
+  color: var(--color-texto-cabecera);
+
+  font-size: 1.5rem;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  
+  gap: 5rem;
+}
+
+.botones{
+    gap: 1rem;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 7px;
+    border: none;
+    display: flex;
+
+
+    background-color: var(--color-cabecera-claro);
+    color: var(--color-texto);
+    font-family: var(--fuente-cabecera);
+    font-size: 0.9rem;
+}
+</style>
