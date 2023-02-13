@@ -159,9 +159,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template('index.html')
+    return render_template('paginaPrincipal.html')
 
-@app.route("/puntos", methods=['POST'])
+@app.route("/predecir", methods=['POST'])
+def paginaPredecir():
+    return render_template('templatePrediccion.html')
+
+@app.route("/prediccion-realizada", methods=['POST'])
 def funcPredecir():    
     equipoLocal = str(request.form['equipoLocal'])
     equipoVisitante = str(request.form['equipoVisitante'])
@@ -173,12 +177,12 @@ def funcPredecir():
     puntosAbsolutos = abs(diferenciaPuntos)
 
     if puntosAbsolutos <= 0.15:
-        return render_template('index.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} terminará en EMPATE.')
+        return render_template('templatePrediccion.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} terminará en EMPATE.')
     else:
         if puntuacionLocal>puntuacionVisitante:
-            return render_template('index.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} lo GANARÁ el {equipoLocal} jugando como local.')
+            return render_template('templatePrediccion.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} lo GANARÁ el {equipoLocal} jugando como local.')
         else:
-            return render_template('index.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} lo GANARÁ el {equipoVisitante} jugando como visitante.')
+            return render_template('templatePrediccion.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} lo GANARÁ el {equipoVisitante} jugando como visitante.')
     
     
 
