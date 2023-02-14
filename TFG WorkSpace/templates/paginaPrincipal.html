@@ -1,21 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
-        <meta charset="utf-8">
-        
+        <meta charset="utf-8">        
         <title>Web TFG</title>
+        
     </head>
 
     <body>
         <div class="cabecera">
+            <img src="/images/logosinfondo.png" alt="Logo">
             <div class="titulo-proyecto">WEB TFG</div>
             <div class="botones">
-                <form class="boton-predecir" action="/predecir" method="post">
-                    <button type="submit" class="btn-outline-success">Ir a predecir partido</button>
+                <form action="/predecir" method="post">
+                    <button type="submit" class="btn-outline-success">Predicción de partido</button>
+                </form>
+
+                <form action="/predecir" method="post">
+                    <button type="submit" class="btn-outline-success">Predicción personalizada</button>
                 </form>
 
                 <form action="/racha" method="post">
-                    <button type="submit" class="btn-outline-success">Ir a calcular la racha</button>
+                    <button type="submit" class="btn-outline-success">Calculadora de racha</button>
+                </form>
+
+                <form action="/racha" method="post">
+                    <button type="submit" class="btn-outline-success">Documentación</button>
                 </form>
             </div>      
             
@@ -27,9 +36,8 @@
 
 :root {
   --color-cabecera: hsl(3, 0%, 10%);
-  --color-cabecera-claro: hsl(3, 0%, 60%);
   --color-texto-cabecera: hsl(3, 0%, 100%);
-  --color-lienzo: hsl(3, 0%, 100%);
+  --dorado-botones: hsl(46, 65%, 52%);
 
   --fuente-cabecera: sans-serif;
   /* --fuente-tamaño: 16px; */
@@ -54,17 +62,35 @@
   color: var(--color-texto-cabecera);
 }
 
-.botones{
-    gap: 1rem;
-    /*width: 100%;*/
-    padding: 0.8rem 1rem;
-    border-radius: 7px;
-    border: none;
+.titulo-proyecto{
     display: flex;
+    align-items: center;
+    color: var(--dorado-botones);
 
-    background-color: var(--color-cabecera-claro);
-    color: var(--color-texto);
-    font-family: var(--fuente-cabecera);
-    font-size: 0.9rem;
 }
+
+.botones{
+    gap: 0.5rem;
+    display: flex;
+}
+
+.btn-outline-success{
+    color: black;
+    background-color: white;
+
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    
+    border: 2px solid var(--dorado-botones);
+    border-radius: 6px;
+}
+
+.btn-outline-success:hover{
+    color: black;
+    background-color: var(--dorado-botones);
+}
+
 </style>

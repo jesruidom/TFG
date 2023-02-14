@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Web TFG</title>
+    </head>
+    <body>
+        <div class="login">
+
+            <h1>Calculadora de puntos</h1>
+            <p>Introduce el nombre del equipo que quieras consultar y haz click en el boton "Calcular los puntos" para ver cuantos puntos tiene ese equipo</p>
+
+            <form action="/prediccion-realizada" method="post">
+
+                <label for="equipoLocal"></label>
+                <select name="equipoLocal" id="equipo" required="required">
+                    <option disabled selected>Equipo local</option>
+                    <option value="Almeria">Almeria</option>
+                    <option value="Athletic Bilbao">Athletic Bilbao</option>
+                    <option value="Atletico Madrid">Atletico Madrid</option>
+                    <option value="Barcelona">Barcelona</option>
+                    <option value="Cadiz">Cadiz</option>
+                    <option value="Celta Vigo">Celta Vigo</option>
+                    <option value="Elche">Elche</option>
+                    <option value="Espanyol">Espanyol</option>
+                    <option value="Getafe">Getafe</option>
+                    <option value="Girona">Girona</option>
+                    <option value="Mallorca">Mallorca</option>
+                    <option value="Osasuna">Osasuna</option>
+                    <option value="Rayo Vallecano">Rayo Vallecano</option>
+                    <option value="Real Betis">Real Betis</option>
+                    <option value="Real Madrid">Real Madrid</option>
+                    <option value="Real Sociedad">Real Sociedad</option>
+                    <option value="Sevilla">Sevilla</option>
+                    <option value="Valencia">Valencia</option>
+                    <option value="Valladolid">Valladolid</option>
+                    <option value="Villarreal">Villarreal</option>
+                </select>
+
+                <label for="equipoVisitante"></label>
+                <select name="equipoVisitante" id="equipo" required="required">
+                    <option disabled selected>Equipo visitante</option>
+                    <option value="Almeria">Almeria</option>
+                    <option value="Athletic Bilbao">Athletic Bilbao</option>
+                    <option value="Atletico Madrid">Atletico Madrid</option>
+                    <option value="Barcelona">Barcelona</option>
+                    <option value="Cadiz">Cadiz</option>
+                    <option value="Celta Vigo">Celta Vigo</option>
+                    <option value="Elche">Elche</option>
+                    <option value="Espanyol">Espanyol</option>
+                    <option value="Getafe">Getafe</option>
+                    <option value="Girona">Girona</option>
+                    <option value="Mallorca">Mallorca</option>
+                    <option value="Osasuna">Osasuna</option>
+                    <option value="Rayo Vallecano">Rayo Vallecano</option>
+                    <option value="Real Betis">Real Betis</option>
+                    <option value="Real Madrid">Real Madrid</option>
+                    <option value="Real Sociedad">Real Sociedad</option>
+                    <option value="Sevilla">Sevilla</option>
+                    <option value="Valencia">Valencia</option>
+                    <option value="Valladolid">Valladolid</option>
+                    <option value="Villarreal">Villarreal</option>
+                </select>
+                <button type="submit" class="btn-outline-success">Predecir Partido</button>
+
+            </form>
+        </div>
+        <br>
+        <br>
+        {{puntos_texto}}
+
+        <br>
+        <br>
+        <div class="rachapuntos">
+            <form action="/racha" method="post">
+                <button type="submit" class="btn-outline-success">Ir a calcular la racha</button>
+
+            </form>
+            <form action="/predecir" method="post">
+                <button type="submit" class="btn-outline-success">Predecir otro partido</button>
+            </form>
+        </div>
+        
+    </body>
+</html>
