@@ -8,7 +8,9 @@
 
     <body>
         <div class="cabecera">
-            <img src="/images/logosinfondo.png" alt="Logo">
+            <!-- <img class="logo" src="https://w7.pngwing.com/pngs/223/778/png-transparent-statistical-association-football-predictions-logo-odds-football-emblem-label-logo.png" alt="Logo">  -->
+            <img  class="logo" src="{{  url_for('static', filename='images/logosinfondo.png')  }}" alt="Logo">
+
             <div class="titulo-proyecto">WEB TFG</div>
             <div class="botones">
                 <form action="/predecir" method="post">
@@ -72,6 +74,7 @@
 .botones{
     gap: 0.5rem;
     display: flex;
+    align-items: center;
 }
 
 .btn-outline-success{
@@ -91,6 +94,11 @@
 .btn-outline-success:hover{
     color: black;
     background-color: var(--dorado-botones);
+}
+
+.logo{
+    width: 70px;
+    height: 50px;
 }
 
 </style>
