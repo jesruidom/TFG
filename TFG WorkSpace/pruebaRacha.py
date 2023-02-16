@@ -3,8 +3,8 @@ import json
 from datetime import date
 
 fecha = date.today()
-API_key = '7OeqySIO35MjJfT7'
-API_secret = 'NeqrSKFMlDoaZvo6kCxSvfHzkuT4JMcw'
+API_key = '3vMUeI4ryQUclm8H'
+API_secret = 'elvCTfZX9MvlGOPKkCFzkK0TAU6WheEw'
 
 #Funcion para calcular el mes y año correcto a la fecha desde la que vamos a empezar a buscar la racha de partidos
 def calculaFechaAnterior(fecha):
@@ -105,24 +105,32 @@ print(f'El primer valor del dato a analizar es: {resultadoDePrueba[4]} y es de t
 
 def creaRacha(equipo, listaPartidos):
     racha = 0
-    i = 0
+    i = 0        
+    victorias = 0
+    empates = 0
+    derrotas = 0
     while i<len(listaPartidos):
         resultadoTemporal = listaPartidos[i]['ft_score']
         golesLocal =  int(resultadoTemporal[0])
         golesVisitante =  int(resultadoTemporal[4])
         if golesLocal == golesVisitante:
             racha += 0.5
+            empates += 1
         elif golesLocal > golesVisitante:
             if equipo == listaPartidos[i]['home_name']:
                 racha += 1
+                victorias += 1
+            else:
+                derrotas +=1
         elif golesLocal < golesVisitante:
             if equipo == listaPartidos[i]['away_name']:
                 racha += 1
-        else:
-            racha += 0
+                victorias += 1
+            else:
+                derrotas += 1
         i += 1
-    return racha
+    return racha, victorias, empates, derrotas
 
 rachaAcomulada = creaRacha(equipo, listaDatosPartidos)
-#print(f'La racha acomulada del {equipo} es de {rachaAcomulada}')
+print(f'La racha acomulada del {equipo} es de {rachaAcomulada}')
 

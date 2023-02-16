@@ -113,22 +113,30 @@ def golesContraMax(listaClasificacion):
 def creaRacha(equipo, listaPartidos):
     racha = 0
     i = 0
+    victorias = 0
+    empates = 0
+    derrotas = 0
     while i<len(listaPartidos):
         resultadoTemporal = listaPartidos[i]['ft_score']
         golesLocal =  int(resultadoTemporal[0])
         golesVisitante =  int(resultadoTemporal[4])
+
         if golesLocal == golesVisitante:
             racha += 0.5
+            empates += 1
         elif golesLocal > golesVisitante:
             if equipo == listaPartidos[i]['home_name']:
                 racha += 1
+                victorias += 1
+            else:
+                derrotas += 1
         elif golesLocal < golesVisitante:
             if equipo == listaPartidos[i]['away_name']:
                 racha += 1
-        else:
-            racha += 0
+                victorias += 1
+            else: derrotas += 1
         i += 1
-    return racha
+    return racha, victorias, empates, derrotas
 
 #Funcion que genera la puntuación de cada equipo segun los puntos en la clasificacion, los goles a favor, goles en contra y la puntuacion de su racha
 def puntuacion(equipo):
@@ -195,7 +203,8 @@ def calculaRacha():
     equipo = str(request.form['equipoLocal'])
     ultimosPartidos = obtenPartidos(equipo)
     rachaLocal = creaRacha(equipo,ultimosPartidos)
-    return render_template('templateRacha.html', racha_texto = f'La puntuación del {equipo} según los partidos jugados en el ultimo mes es de {rachaLocal}.')
+    return render_template('templateRacha.html', racha_texto = f'El {equipo} ha jugado {len(ultimosPartidos)} partidos en el último mes, ha ganado {rachaLocal[1]}, empatado {rachaLocal[2]} y perdido {rachaLocal[3]}.', 
+        racha_texto2 = f'Por tanto, ha obteniendo una puntuación de {rachaLocal[0]}.')
 
 if __name__ == "__main__":
     app.run()
