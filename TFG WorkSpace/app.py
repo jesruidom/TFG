@@ -143,7 +143,8 @@ def puntuacion(equipo):
     i = 0
     datosPartidos = obtenPartidos(equipo)
     numPartidosJugadosUltimoMes = len(datosPartidos)
-    puntRacha = float(creaRacha(equipo, datosPartidos))
+    puntRacha = float(creaRacha(equipo, datosPartidos)[0])
+    
     maximosGolesFavor = golesFavorMax(listaClasificacion)
     maximosgolesContra = golesContraMax(listaClasificacion)
     while i<len(listaClasificacion):

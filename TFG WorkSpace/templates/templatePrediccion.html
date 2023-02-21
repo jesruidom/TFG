@@ -3,9 +3,35 @@
     <head>
         <meta charset="utf-8">
         <title>Web TFG</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/templatePrediccion.css')}}">
     </head>
     <body>
-        <div class="login">
+
+        <div class="cabecera">
+            <div class="logo"> <a href="http://127.0.0.1:5000"><img  class="logo" src="{{url_for('static', filename='images/logosinfondo.png')}}" alt="Logo"></a></div>
+
+            <div class="titulo-proyecto">WEB TFG</div>
+            <div class="botones">
+                <form action="/predecir" method="post">
+                    <button type="submit" class="btn-outline-success">Predicción de partido</button>
+                </form>
+
+                <form action="/predecir" method="post">
+                    <button type="submit" class="btn-outline-success">Predicción personalizada</button>
+                </form>
+
+                <form action="/racha" method="post">
+                    <button type="submit" class="btn-outline-success">Calculadora de racha</button>
+                </form>
+
+                <form action="/racha" method="post">
+                    <button type="submit" class="btn-outline-success">Documentación</button>
+                </form>
+            </div>      
+            
+        </div>
+
+        <div class="contenido">
 
             <h1>Calculadora de puntos</h1>
             <p>Introduce el nombre del equipo que quieras consultar y haz click en el boton "Calcular los puntos" para ver cuantos puntos tiene ese equipo</p>
@@ -61,25 +87,26 @@
                     <option value="Valladolid">Valladolid</option>
                     <option value="Villarreal">Villarreal</option>
                 </select>
-                <button type="submit" class="btn-outline-success">Predecir Partido</button>
+                <button type="submit" class="btn-acciones">Predecir Partido</button>
 
             </form>
+
+            <div class="resultado">
+                <p>{{puntos_texto}}</p>
+            </div>
+        
+
+            <div class="rachapuntos">
+                <form action="/predecir" method="post">
+                    <button type="submit" class="btn-acciones">Predecir otro partido</button>
+                </form>
+                <form action="/racha" method="post">
+                    <button type="submit" class="btn-acciones">Ir a calcular la racha</button>
+                </form>
+            </div>
         </div>
-        <br>
-        <br>
-        {{puntos_texto}}
 
-        <br>
-        <br>
-        <div class="rachapuntos">
-            <form action="/racha" method="post">
-                <button type="submit" class="btn-outline-success">Ir a calcular la racha</button>
-
-            </form>
-            <form action="/predecir" method="post">
-                <button type="submit" class="btn-outline-success">Predecir otro partido</button>
-            </form>
-        </div>
+        
         
     </body>
 </html>
