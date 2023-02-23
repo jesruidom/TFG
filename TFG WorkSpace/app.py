@@ -155,7 +155,7 @@ def puntuacion(equipo):
             break
         i += 1
     puestoEquilibrado = 21 - puesto
-    puntuacionFinal = puestoEquilibrado/20 * 0.35 + golesFavor/maximosGolesFavor * 0.15 + golesContra/maximosgolesContra * 0.15 + puntRacha/numPartidosJugadosUltimoMes * 0.35
+    puntuacionFinal = puestoEquilibrado/20 * 0.35 + golesFavor/maximosGolesFavor * 0.15 - golesContra/maximosgolesContra * 0.15 + puntRacha/numPartidosJugadosUltimoMes * 0.35
     return puntuacionFinal
 
 ############################################## FIN SECCION #####################################################
@@ -206,6 +206,10 @@ def calculaRacha():
     rachaLocal = creaRacha(equipo,ultimosPartidos)
     return render_template('templateRacha.html', racha_texto = f'El {equipo} ha jugado {len(ultimosPartidos)} partidos en el último mes, ha ganado {rachaLocal[1]}, empatado {rachaLocal[2]} y perdido {rachaLocal[3]}.', 
         racha_texto2 = f'Por tanto, ha obteniendo una puntuación de {rachaLocal[0]}.')
+
+@app.route("/documentacion", methods=['POST'])
+def paginaDocumentacion():
+    return render_template('templateDocumentacion.html')
 
 if __name__ == "__main__":
     app.run()

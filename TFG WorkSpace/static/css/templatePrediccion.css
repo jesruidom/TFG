@@ -8,15 +8,15 @@
   }
     
   * {
-    box-sizing: border-box;
+    /*box-sizing: border-box;*/
     margin: 0;
-    padding: 0;
+    /*padding: 0;*/
     
     /* outline: 1px solid red; */
   }
   
   .cabecera {
-    padding: 1rem 1rem;
+    padding: 1rem;
     display: flex;  
     gap: 5rem;
   
@@ -64,18 +64,34 @@
   }
 
   .contenido{
+    /*padding: 16rem 0;*/
+    height: 90%;
     display: flex;
     flex-direction: column;
+    /*flex-basis: content;*/
     text-align: center;
     gap: 5px;
+    background-color: aqua;
   }
 
-  .rachapuntos{
-    display: flex;
-    gap: 5px;
+  .titulo-pagina{
+
+  }
+
+  .descripcion{
+    /*margin-bottom: 12rem;*/
   }
 
   .resultado{
     color: blue;
     align-items: center;
   }
+
+  .rachapuntos{
+    display: flex;
+    justify-content: flex-start; /*Poner los botones a la izquierda del espacio flex*/
+    gap: 5px;
+
+    /*margin-top: 16rem;*/
+  }
+

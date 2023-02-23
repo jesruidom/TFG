@@ -1,64 +1,69 @@
 :root {
     --color-cabecera: hsl(3, 0%, 10%);
-    --color-texto-cabecera: hsl(3, 0%, 100%);
     --dorado-botones: hsl(46, 65%, 52%);
   
     --fuente-cabecera: sans-serif;
-    /* --fuente-tamaño: 16px; */
   }
-    
-  * {
-    box-sizing: border-box;
+
+*{
+    /*outline: 1px solid red;*/
+}
+
+html, body{
+    display: flex;
+    flex-direction: column;
+    height:100vh;
     margin: 0;
-    padding: 0;
-    
-    /* outline: 1px solid red; */
   }
-  
-  .cabecera {
-    padding: 1rem 1rem;
-    display: flex;  
-    gap: 5rem;
-  
-    font-family: var(--fuente-cabecera);
-    font-size: 1.5rem;
+/*================================= COMIENZO ZONA MENU =================================*/
+
+  .zona-cabecera{
+    height:8%;
+    width: clamp(100px,100%);
     background-color: var(--color-cabecera);
-    color: var(--color-texto-cabecera);
+    
+    display:flex;
+    align-items: center;
+    gap: 5rem;
   }
-  
-  .titulo-proyecto{
-      display: flex;
-      align-items: center;
-      color: var(--dorado-botones);
-  
-  }
-  
-  .botones{
-      gap: 0.5rem;
-      display: flex;
-      align-items: center;
-  }
-  
-  .btn-outline-success{
-      color: black;
-      background-color: white;
-  
-      padding: 10px 20px;
-      text-align: center;
-      display: inline-block;
-      font-size: 16px;
-      cursor: pointer;
-      
-      border: 2px solid var(--dorado-botones);
-      border-radius: 6px;
-  }
-  
-  .btn-outline-success:hover{
-      color: black;
-      background-color: var(--dorado-botones);
-  }
-  
+
   .logo{
-      width: 70px;
-      height: 50px;
+    width: 70px;
+    height: 50px;
+  }
+
+  .botones{
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.btn-outline-success{
+    color: black;
+    background-color: white;
+
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    
+    border: 2px solid var(--dorado-botones);
+    border-radius: 6px;
+}
+
+.btn-outline-success:hover{
+    color: black;
+    background-color: var(--dorado-botones);
+}
+
+
+
+  /*================================= FINAL ZONA MENU =================================*/
+  
+  .zona-informacion{
+    /*flex: 1;*/
+    height: 92%;
+    width: clamp(100px,100%);
+    background-color: aqua;
   }

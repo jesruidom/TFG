@@ -8,15 +8,14 @@
   }
     
   * {
-    box-sizing: border-box;
+    /*box-sizing: border-box;    
+    padding: 0;*/
     margin: 0;
-    padding: 0;
-    
     /* outline: 1px solid red; */
   }
   
   .cabecera {
-    padding: 1rem 1rem;
+    padding: 1rem;
     display: flex;  
     gap: 5rem;
   
@@ -61,4 +60,13 @@
   .logo{
       width: 70px;
       height: 50px;
+  }
+
+  .contenido{
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+    box-sizing: 50%;
   }
