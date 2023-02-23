@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <title>Web TFG</title>
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/templatePrediccion.css')}}">
     </head>
+
     <body>
 
-        <div class="cabecera">
+        <div class="zona-cabecera">
             <div class="logo"> <a href="http://127.0.0.1:5000"><img  class="logo" src="{{url_for('static', filename='images/logosinfondo.png')}}" alt="Logo"></a></div>
-
-            <div class="titulo-proyecto">WEB TFG</div>
+            
             <div class="botones">
                 <form action="/predecir" method="post">
                     <button type="submit" class="btn-outline-success">Predicción de partido</button>
@@ -24,14 +24,13 @@
                     <button type="submit" class="btn-outline-success">Calculadora de racha</button>
                 </form>
 
-                <form action="/racha" method="post">
+                <form action="/documentacion" method="post">
                     <button type="submit" class="btn-outline-success">Documentación</button>
                 </form>
-            </div>      
-            
+            </div>
         </div>
 
-        <div class="contenido">
+        <div class="zona-informacion">
 
             <h1 class="titulo-pagina">Calculadora de puntos</h1>
             <p class="descripcion">Introduce el nombre del equipo que quieras consultar y haz click en el boton "Calcular los puntos" para ver cuantos puntos tiene ese equipo</p>
@@ -93,10 +92,9 @@
 
             <div class="resultado">
                 <p>{{puntos_texto}}</p>
-            </div>
-        
+            </div>        
 
-            <div class="rachapuntos">
+            <div class="botones-abajo">
                 <form action="/predecir" method="post">
                     <button type="submit" class="btn-acciones">Predecir otro partido</button>
                 </form>

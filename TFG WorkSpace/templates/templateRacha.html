@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <title>Web TFG</title>
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/templateRacha.css')}}">
     </head>
-    <body>
-        <div class="cabecera">
-            <div class="logo"> <a href="http://127.0.0.1:5000"><img  class="logo" src="{{url_for('static', filename='images/logosinfondo.png')}}" alt="Logo"></a></div>
 
-            <div class="titulo-proyecto">WEB TFG</div>
+    <body>
+        
+        <div class="zona-cabecera">
+            <div class="logo"> <a href="http://127.0.0.1:5000"><img  class="logo" src="{{url_for('static', filename='images/logosinfondo.png')}}" alt="Logo"></a></div>
+            
             <div class="botones">
                 <form action="/predecir" method="post">
                     <button type="submit" class="btn-outline-success">Predicción de partido</button>
@@ -23,15 +24,13 @@
                     <button type="submit" class="btn-outline-success">Calculadora de racha</button>
                 </form>
 
-                <form action="/racha" method="post">
+                <form action="/documentacion" method="post">
                     <button type="submit" class="btn-outline-success">Documentación</button>
                 </form>
-            </div>      
-            
+            </div>
         </div>
 
-
-        <div class="contenido">
+        <div class="zona-informacion">
 
             <h1>Calculadora de racha por equipos</h1>
             <p>Introduce el nombre del equipo que quieras consultar y haz click en el boton "Calcular la racha" para ver la racha en el último mes del equipo</p>
@@ -64,18 +63,23 @@
                 </select>
                 <button type="submit" class="btn-acciones">Calcular la racha</button>
 
+            <div class="resultado">
+                <p>{{racha_texto}}</p>
+                <p>{{racha_texto2}}</p>
+            </div>
+
+            <div class="botones-abajo">
+                <form action="/racha" method="post">
+                    <button type="submit" class="btn-acciones">Calcular otra racha</button>
+                </form>
+
+                <form action="/predecir" method="post">
+                    <button type="submit" class="btn-acciones">Predecir partido</button>
+                </form>
+            </div>
             </form>
-            <form action="/racha" method="post">
-                <button type="submit" class="btn-acciones">Calcular otra racha</button>
-            </form>
-            <form action="/predecir" method="post">
-                <button type="submit" class="btn-acciones">Predecir partido</button>
-            </form>
+            
         </div>
-        <br>
-        <br>
-        {{racha_texto}}
-        <br>
-        {{racha_texto2}}
+        
     </body>
 </html>

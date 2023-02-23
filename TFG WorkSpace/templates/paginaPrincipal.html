@@ -7,10 +7,9 @@
     </head>
 
     <body>
-        <div class="cabecera">
+        <div class="zona-cabecera">
             <div class="logo"> <a href="http://127.0.0.1:5000"><img  class="logo" src="{{url_for('static', filename='images/logosinfondo.png')}}" alt="Logo"></a></div>
-
-            <div class="titulo-proyecto">WEB TFG</div>
+            
             <div class="botones">
                 <form action="/predecir" method="post">
                     <button type="submit" class="btn-outline-success">Predicción de partido</button>
@@ -27,11 +26,10 @@
                 <form action="/documentacion" method="post">
                     <button type="submit" class="btn-outline-success">Documentación</button>
                 </form>
-            </div>      
-            
+            </div>
         </div>
 
-        <div class="contenido">
+        <div class="zona-informacion">
             <h1 class="titulo">Titulo de prueba</h1>
             <p class="descripcion">
                 Esto es un texto de prueba que funciona como descripción de la pagina principal de la web
