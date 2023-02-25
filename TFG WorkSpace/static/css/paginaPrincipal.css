@@ -14,6 +14,7 @@ html, body{
   flex-direction: column;
   height:100vh;
   margin: 0;
+  background: url("../images/estadiofondo.jpg") center no-repeat;
 }
 /*================================= COMIENZO ZONA MENU =================================*/
 
@@ -63,7 +64,18 @@ html, body{
 
 .zona-informacion{
   /*flex: 1;*/
+  display: flex;
   height: 92%;
   width: clamp(100px,100%);
+  margin: 10%;
   background-color: aqua;
+  opacity: 0.4;
+}
+
+.informacion{
+
+}
+
+#descripcion{
+
 }
