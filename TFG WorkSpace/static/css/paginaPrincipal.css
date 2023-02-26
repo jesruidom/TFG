@@ -3,7 +3,10 @@
   --dorado-botones: hsl(46, 65%, 52%);
   --dorado-fonodo-opacidad: hsla(46, 65%, 52%, 0.6);
 
-  --fuente-cabecera: sans-serif;
+  --tipo-letra: sans-serif;
+  --tamaño-titulo-principal: 50px;
+  --tamaño-titulo-secundario: 40px;
+  --tamaño-texto: 20px;
 }
 
 *{
@@ -23,6 +26,7 @@ html, body{
   height:8%;
   width: clamp(100px,100%);
   background-color: var(--color-cabecera);
+  font-family: var(--tipo-letra);
   
   display:flex;
   align-items: center;
@@ -64,6 +68,8 @@ html, body{
 
 /*================================= FINAL ZONA MENU =================================*/
 
+/*================================= COMIENZO ZONA INFORMACION =================================*/
+
 .zona-informacion{
   /*flex: 1;*/
   display: flex;
@@ -78,13 +84,18 @@ html, body{
 }
 
 .titulo{
-  font-size: 50px;
+  font-family: var(--tipo-letra);
+  font-size: var(--tamaño-titulo-principal);
 }
 
 .zona-informacion div{
   margin-top: 8%;
   margin-left: 2%;
   margin-right: 2%;
-  font-size: 20px;
+
+  font-family: var(--tipo-letra);
+  font-size: var(--tamaño-texto);
   text-align: center;
 }
+
+/*================================= FINAL ZONA INFORMACION =================================*/

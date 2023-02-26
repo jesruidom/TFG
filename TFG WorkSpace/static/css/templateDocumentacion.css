@@ -1,69 +1,103 @@
 :root {
-    --color-cabecera: hsl(3, 0%, 10%);
-    --dorado-botones: hsl(46, 65%, 52%);
-  
-    --fuente-cabecera: sans-serif;
-  }
+  --color-cabecera: hsl(3, 0%, 10%);
+  --dorado-botones: hsl(46, 65%, 52%);
+  --dorado-fonodo-opacidad: hsla(46, 65%, 52%, 0.6);
+
+  --tipo-letra: sans-serif;
+  --tamaño-titulo-principal: 50px;
+  --tamaño-titulo-secundario: 40px;
+  --tamaño-texto: 20px;
+}
 
 *{
-    /*outline: 1px solid red;*/
+  /*outline: 1px solid red;*/
 }
 
 html, body{
-    display: flex;
-    flex-direction: column;
-    height:100vh;
-    margin: 0;
-  }
+  display: flex;
+  flex-direction: column;
+  height:100vh;
+  margin: 0;
+  background: url("../images/estadiofondo.jpg") center no-repeat;
+}
 /*================================= COMIENZO ZONA MENU =================================*/
 
-  .zona-cabecera{
-    height:8%;
-    width: clamp(100px,100%);
-    background-color: var(--color-cabecera);
-    
-    display:flex;
-    align-items: center;
-    gap: 5rem;
-  }
+.zona-cabecera{
+  height:8%;
+  width: clamp(100px,100%);
+  background-color: var(--color-cabecera);
+  font-family: var(--tipo-letra);
+  
+  display:flex;
+  align-items: center;
+  gap: 5rem;
+}
 
-  .logo{
-    width: 70px;
-    height: 50px;
-  }
+.logo{
+  width: 70px;
+  height: 50px;
+  margin-left: 1%;
+}
 
-  .botones{
-    gap: 0.5rem;
-    display: flex;
-    align-items: center;
+.botones{
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .btn-outline-success{
-    color: black;
-    background-color: white;
+  color: black;
+  background-color: var(--dorado-botones);
 
-    padding: 10px 20px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    
-    border: 2px solid var(--dorado-botones);
-    border-radius: 6px;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  
+  border: 2px solid white;
+  border-radius: 6px;
 }
 
 .btn-outline-success:hover{
-    color: black;
-    background-color: var(--dorado-botones);
+  color: black;
+  background-color: white;
 }
 
 
 
-  /*================================= FINAL ZONA MENU =================================*/
-  
-  .zona-informacion{
-    /*flex: 1;*/
-    height: 92%;
-    width: clamp(100px,100%);
-    background-color: aqua;
-  }
+/*================================= FINAL ZONA MENU =================================*/
+
+/*================================= COMIENZO ZONA INFORMACION =================================*/
+
+.zona-informacion{
+  /*flex: 1;*/
+  display: flex;
+  flex-direction: column;
+  height: 92%;
+  width: clamp(100px,100%);
+  margin: 3%;
+  background-color: var(--dorado-fonodo-opacidad);
+  /*align-items: center; alinea al centro de manera horizontal*/
+  /*justify-content: center; alinea al centro de manera vertical*/
+
+}
+
+.titulo{
+  margin: 2%;
+
+  font-family: var(--tipo-letra);
+  font-size: var(--tamaño-titulo-secundario);
+}
+
+.zona-informacion div{
+  margin-top: 8%;
+  margin-left: 2%;
+  margin-right: 2%;
+
+  font-family: var(--tipo-letra);
+  font-size: var(--tamaño-texto);
+  /*text-align: center;*/
+}
+
+/*================================= FINAL ZONA INFORMACION =================================*/

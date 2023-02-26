@@ -1,8 +1,12 @@
 :root {
   --color-cabecera: hsl(3, 0%, 10%);
   --dorado-botones: hsl(46, 65%, 52%);
+  --dorado-fonodo-opacidad: hsla(46, 65%, 52%, 0.6);
 
-  --fuente-cabecera: sans-serif;
+  --tipo-letra: sans-serif;
+  --tamaño-titulo-principal: 50px;
+  --tamaño-titulo-secundario: 40px;
+  --tamaño-texto: 20px;
 }
 
 *{
@@ -14,6 +18,7 @@ html, body{
   flex-direction: column;
   height:100vh;
   margin: 0;
+  background: url("../images/estadiofondo.jpg") center no-repeat;
 }
 /*================================= COMIENZO ZONA MENU =================================*/
 
@@ -21,6 +26,7 @@ html, body{
   height:8%;
   width: clamp(100px,100%);
   background-color: var(--color-cabecera);
+  font-family: var(--tipo-letra);
   
   display:flex;
   align-items: center;
@@ -30,6 +36,7 @@ html, body{
 .logo{
   width: 70px;
   height: 50px;
+  margin-left: 1%;
 }
 
 .botones{
@@ -40,7 +47,7 @@ html, body{
 
 .btn-outline-success{
   color: black;
-  background-color: white;
+  background-color: var(--dorado-botones);
 
   padding: 10px 20px;
   text-align: center;
@@ -48,44 +55,64 @@ html, body{
   font-size: 16px;
   cursor: pointer;
   
-  border: 2px solid var(--dorado-botones);
+  border: 2px solid white;
   border-radius: 6px;
 }
 
 .btn-outline-success:hover{
   color: black;
-  background-color: var(--dorado-botones);
+  background-color: white;
 }
-
-
 
 /*================================= FINAL ZONA MENU =================================*/
 
+/*================================= COMIENZO ZONA INFORMACION =================================*/
+
 .zona-informacion{
   /*flex: 1;*/
+  display: flex;
+  flex-direction: column;
   height: 92%;
   width: clamp(100px,100%);
-  background-color: aqua;
+  margin: 3%;
+  background-color: var(--dorado-fonodo-opacidad);
+  /*align-items: center; alinea al centro de manera horizontal*/
+  /*justify-content: center; alinea al centro de manera vertical*/
 }
 
-  .titulo-pagina{
+.titulo{
+  margin: 2%;
 
-  }
+  font-family: var(--tipo-letra);
+  font-size: var(--tamaño-titulo-principal);
+}
 
-  .descripcion{
-    /*margin-bottom: 12rem;*/
-  }
+.texto-informacion{
+  margin: 2%;
+  margin-top: 0%; /*No es necesario que tenga margen por arriba ya que lo hereda del título*/
 
-  .resultado{
-    color: blue;
-    align-items: center;
-  }
+  font-family: var(--tipo-letra);
+  font-size: var(--tamaño-texto);
+  /*text-align: center;*/
+}
 
-  .rachapuntos{
-    display: flex;
-    justify-content: flex-start; /*Poner los botones a la izquierda del espacio flex*/
-    gap: 5px;
+.zona-seleccion-equipo{
+  margin-top: 8%;
+  display: flex;
+  justify-content: center;
+}
 
-    /*margin-top: 16rem;*/
-  }
+.resultado{
+  display: flex;
+  justify-content: center;
+  font-family: var(--tipo-letra);
+  font-size: var(--tamaño-texto);
+}
+
+.botones-abajo{
+  display: flex;
+  margin-top: 17%;
+  margin-left: 2%;
+  gap: 5px;
+}
 
