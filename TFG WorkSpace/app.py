@@ -4,8 +4,8 @@ import json
 from datetime import date
 
 fecha = date.today()
-API_key = '3vMUeI4ryQUclm8H'
-API_secret = 'elvCTfZX9MvlGOPKkCFzkK0TAU6WheEw'
+API_key = 'djgoa61LyiiPBT3E'
+API_secret = 'izA1NKQSRw41PEN2X3r7asSILbxm4B1n'
 
 ##################################################################################################################
 #SECCIÓN EN LA QUE SE EXTRAEN Y SE MODIFICAN LOS DATOS DE LA CLASIFICACIÓN DE LA API PARA TRATARLOS ADECUADAMENTE#

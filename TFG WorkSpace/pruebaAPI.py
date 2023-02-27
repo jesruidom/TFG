@@ -1,8 +1,8 @@
 import urllib.request
 import json
 
-API_key = '3vMUeI4ryQUclm8H'
-API_secret = 'elvCTfZX9MvlGOPKkCFzkK0TAU6WheEw'
+API_key = 'djgoa61LyiiPBT3E'
+API_secret = 'izA1NKQSRw41PEN2X3r7asSILbxm4B1n'
 
 #url = 'https://livescore-api.com/api-client/competitions/standings.json?competition_id=3&key=7OeqySIO35MjJfT7&secret=NeqrSKFMlDoaZvo6kCxSvfHzkuT4JMcw'
 url = f'https://livescore-api.com/api-client/competitions/standings.json?competition_id=3&key={API_key}&secret={API_secret}'

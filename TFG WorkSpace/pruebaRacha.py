@@ -3,8 +3,8 @@ import json
 from datetime import date
 
 fecha = date.today()
-API_key = '3vMUeI4ryQUclm8H'
-API_secret = 'elvCTfZX9MvlGOPKkCFzkK0TAU6WheEw'
+API_key = 'djgoa61LyiiPBT3E'
+API_secret = 'izA1NKQSRw41PEN2X3r7asSILbxm4B1n'
 
 #Funcion para calcular el mes y año correcto a la fecha desde la que vamos a empezar a buscar la racha de partidos
 def calculaFechaAnterior(fecha):
