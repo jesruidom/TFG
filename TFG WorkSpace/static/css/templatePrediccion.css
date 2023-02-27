@@ -76,6 +76,7 @@ html, body{
   width: clamp(100px,100%);
   margin: 3%;
   background-color: var(--dorado-fonodo-opacidad);
+  justify-content: space-between;
   /*align-items: center; alinea al centro de manera horizontal*/
   /*justify-content: center; alinea al centro de manera vertical*/
 }
@@ -84,22 +85,21 @@ html, body{
   margin: 2%;
 
   font-family: var(--tipo-letra);
-  font-size: var(--tamaño-titulo-principal);
+  font-size: var(--tamaño-titulo-secundario);
 }
 
 .texto-informacion{
   margin: 2%;
-  margin-top: 0%; /*No es necesario que tenga margen por arriba ya que lo hereda del título*/
-
+  margin-top: -8%;
   font-family: var(--tipo-letra);
   font-size: var(--tamaño-texto);
   /*text-align: center;*/
 }
 
 .zona-seleccion-equipo{
-  margin-top: 8%;
   display: flex;
   justify-content: center;
+  margin-bottom: -5%;
 }
 
 .resultado{
@@ -111,8 +111,7 @@ html, body{
 
 .botones-abajo{
   display: flex;
-  margin-top: 17%;
-  margin-left: 2%;
+  margin: 2%;  
   gap: 5px;
 }
 

@@ -32,10 +32,12 @@
 
         <div class="zona-informacion">
 
-            <h1>Calculadora de racha por equipos</h1>
-            <p>Introduce el nombre del equipo que quieras consultar y haz click en el boton "Calcular la racha" para ver la racha en el último mes del equipo</p>
+            <h1 class="titulo">Calculadora de racha por equipos</h1>
+            <p class="texto-informacion">Introduce el nombre del equipo que quieras consultar y haz click en el boton "Calcular la racha" 
+                para ver la racha en el último mes del equipo</p>
 
-            <form action="/racha-calculada" method="post">
+            <div class="zona-seleccion-equipo">
+                <form action="/racha-calculada" method="post">
 
                 <label for="equipo"></label>
                 <select name="equipoLocal" id="equipo" required="required">
@@ -62,6 +64,8 @@
                     <option value="Villarreal">Villarreal</option>
                 </select>
                 <button type="submit" class="btn-acciones">Calcular la racha</button>
+            </div>    
+            
 
             <div class="resultado">
                 <p>{{racha_texto}}</p>
