@@ -1,6 +1,7 @@
 :root {
   --color-cabecera: hsl(3, 0%, 10%);
   --dorado-botones: hsl(46, 65%, 52%);
+  --azul-botones: hsl(196, 80%, 52%);
   --dorado-fonodo-opacidad: hsla(46, 65%, 52%, 0.6);
 
   --tipo-letra: sans-serif;
@@ -30,12 +31,12 @@ html, body{
   
   display:flex;
   align-items: center;
-  gap: 5rem;
+  gap: 1%;
 }
 
 .logo{
-  width: 70px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   margin-left: 1%;
 }
 
@@ -61,7 +62,7 @@ html, body{
 
 .btn-outline-success:hover{
   color: black;
-  background-color: white;
+  background-color: var(--azul-botones);
 }
 
 
