@@ -110,9 +110,23 @@ html, body{
   font-size: var(--tamaño-texto);
 }
 
+.puntuacion_local{
+  display: flex;;
+  justify-content: flex-end;
+  margin-right: 2%;
+}
+
+.puntuacion_visitante{
+  display: flex;;
+  justify-content: flex-end;
+  margin-right: 2%;
+  margin-top: -8%;
+}
+
 .botones-abajo{
   display: flex;
-  margin: 2%;  
+  margin: 2%;
+  margin-top: -8%;  
   gap: 5px;
 }
 
