@@ -114,13 +114,17 @@ html, body{
   display: flex;;
   justify-content: flex-end;
   margin-right: 2%;
+
+  font-family: var(--tipo-letra);
 }
 
 .puntuacion_visitante{
-  display: flex;;
+  display: flex;
   justify-content: flex-end;
   margin-right: 2%;
   margin-top: -8%;
+
+  font-family: var(--tipo-letra);
 }
 
 .botones-abajo{

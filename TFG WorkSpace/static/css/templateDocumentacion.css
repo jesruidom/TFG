@@ -3,6 +3,7 @@
   --dorado-botones: hsl(46, 65%, 52%);
   --azul-botones: hsl(196, 80%, 52%);
   --dorado-fonodo-opacidad: hsla(46, 65%, 52%, 0.6);
+  --rojo-error: hsl(0, 100%, 50%);
 
   --tipo-letra: sans-serif;
   --tamaño-titulo-principal: 50px;

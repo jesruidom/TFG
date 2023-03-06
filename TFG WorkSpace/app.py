@@ -178,26 +178,30 @@ def paginaPredecir():
 def funcPredecir():    
     equipoLocal = str(request.form['equipoLocal'])
     equipoVisitante = str(request.form['equipoVisitante'])
-    #Hay que crear una excepción para que de error en caso de se seleccione dos veces el mismo equipo
+    
     puntuacionLocal = puntuacion(equipoLocal) + 0.15 # Hay que añadirle algun punto por jugar de local
     puntuacionVisitante = puntuacion(equipoVisitante)
 
     diferenciaPuntos = puntuacionLocal - puntuacionVisitante
     puntosAbsolutos = abs(diferenciaPuntos)
-
-    if puntosAbsolutos <= 0.15:
-        return render_template('templatePrediccion.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} terminará en EMPATE.',
-                               puntos_local = f'La puntuación del {equipoLocal} es: {puntuacionLocal}',
-                               puntos_visitante = f'La puntuación del {equipoVisitante} es: {puntuacionVisitante}')
+#Hay que crear una excepción para que de error en caso de se seleccione dos veces el mismo equipo
+    if equipoLocal == equipoVisitante:
+        return render_template('templateError.html', error = f'ERROR',
+                               texto_de_error = f'Has elegido dos veces el mismo equipo, vuelve a elegir para predecir el partido!')
     else:
-        if puntuacionLocal>puntuacionVisitante:
-            return render_template('templatePrediccion.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} lo GANARÁ el {equipoLocal} jugando como local.',
-                               puntos_local = f'La puntuación del {equipoLocal} es: {puntuacionLocal}',
-                               puntos_visitante = f'La puntuación del {equipoVisitante} es: {puntuacionVisitante}')
+        if puntosAbsolutos <= 0.15:
+            return render_template('templatePrediccion.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} terminará en EMPATE.',
+                                puntos_local = f'La puntuación del {equipoLocal} es: {puntuacionLocal}',
+                                puntos_visitante = f'La puntuación del {equipoVisitante} es: {puntuacionVisitante}')
         else:
-            return render_template('templatePrediccion.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} lo GANARÁ el {equipoVisitante} jugando como visitante.',
-                               puntos_local = f'La puntuación del {equipoLocal} es: {puntuacionLocal}',
-                               puntos_visitante = f'La puntuación del {equipoVisitante} es: {puntuacionVisitante}')
+            if puntuacionLocal>puntuacionVisitante:
+                return render_template('templatePrediccion.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} lo GANARÁ el {equipoLocal} jugando como local.',
+                                puntos_local = f'La puntuación del {equipoLocal} es: {puntuacionLocal}',
+                                puntos_visitante = f'La puntuación del {equipoVisitante} es: {puntuacionVisitante}')
+            else:
+                return render_template('templatePrediccion.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} lo GANARÁ el {equipoVisitante} jugando como visitante.',
+                                puntos_local = f'La puntuación del {equipoLocal} es: {puntuacionLocal}',
+                                puntos_visitante = f'La puntuación del {equipoVisitante} es: {puntuacionVisitante}')
     
     
 
