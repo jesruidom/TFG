@@ -3,11 +3,15 @@
   --dorado-botones: hsl(46, 65%, 52%);
   --azul-botones: hsl(196, 80%, 52%);
   --dorado-fonodo-opacidad: hsla(46, 65%, 52%, 0.6);
+  --rojo-error: hsl(0, 100%, 50%);
+  --verde-borde-botones-seleccionados: hsl(84, 100%, 59%);
+  --verde-color-opciones: hsl(151, 54%, 80%);
 
   --tipo-letra: sans-serif;
   --tamaño-titulo-principal: 50px;
   --tamaño-titulo-secundario: 40px;
   --tamaño-texto: 20px;
+  --tamaño-texto-botones: 16px
 }
 
 *{
@@ -53,7 +57,7 @@ html, body{
   padding: 10px 20px;
   text-align: center;
   display: inline-block;
-  font-size: 16px;
+  font-size: var(--tamaño-texto-botones);
   cursor: pointer;
   
   border: 2px solid white;
@@ -97,10 +101,9 @@ html, body{
   /*text-align: center;*/
 }
 
-.zona-seleccion-equipo{
+.zona-formulario{
   display: flex;
   justify-content: center;
-  margin-bottom: -5%;
 }
 
 .resultado{
@@ -131,7 +134,7 @@ html, body{
   display: flex;
   margin: 2%;
   margin-top: -8%;  
-  gap: 5px;
+  gap: 0.5rem;
 }
 
 .btn-acciones{
@@ -141,7 +144,7 @@ html, body{
   padding: 10px 20px;
   text-align: center;
   display: inline-block;
-  font-size: 16px;
+  font-size: var(--tamaño-texto-botones);
   cursor: pointer;
   
   border: 2px solid var(--dorado-botones);
@@ -150,6 +153,69 @@ html, body{
 
 .btn-acciones:hover{
   color: black;
-  border: 2px solid greenyellow;
+  border: 2px solid var(--verde-borde-botones-seleccionados)
+}
+
+/*################################################################################################################
+#######################################SECCIÓN FORMATO DEL FORMULARIO #########################################*/
+
+.content-select select{
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+/* Eliminamos la fecha que por defecto aparece en el desplegable */
+.content-select select::-ms-expand {
+  display: none;
+}
+
+.content-select{
+	width: 180px;
+	position: relative;
+  margin-right: 0.5rem;
+}
+ 
+.content-select select{
+	display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  padding: 7px 10px;
+  height: 42px;
+
+	background: var(--verde-color-opciones);
+	color: black;
+	font-size: var(--tamaño-texto-botones);
+	
+	border: 2px solid var(--dorado-botones);
+  border-radius: 6px;
+  position: relative;
+  transition: all 0.25s ease;
+}
+ 
+.content-select select:hover{
+	background: var(--azul-botones);
+}
+ 
+/* 
+Creamos la fecha que aparece a la izquierda del select.
+Realmente este elemento es un cuadrado que sólo tienen
+dos bordes con color y que giramos con transform: rotate(-45deg);
+*/
+.content-select i{
+	position: absolute;
+	right: 20px;
+	top: calc(50% - 13px);
+	width: 16px;
+	height: 16px;
+	display: block;
+	border-left:4px solid #2AC176;
+	border-bottom:4px solid #2AC176;
+	transform: rotate(-45deg); /* Giramos el cuadrado */
+	transition: all 0.25s ease;
+}
+ 
+.content-select:hover i{
+	margin-top: 3px;
 }
 

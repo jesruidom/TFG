@@ -38,9 +38,9 @@
                 del partido buscado.
             </p>
 
-            <div class="zona-seleccion-equipo">
-                <form action="/prediccion-realizada" method="post">
+            <form  class="zona-formulario" action="/prediccion-realizada" method="post">
 
+                <div class="content-select">
                     <label for="equipoLocal"></label>
                     <select name="equipoLocal" id="equipo" required="required">
                         <option disabled selected>Equipo local</option>
@@ -65,7 +65,10 @@
                         <option value="Valladolid">Valladolid</option>
                         <option value="Villarreal">Villarreal</option>
                     </select>
-
+                    <i></i>
+                </div>
+                
+                <div class="content-select">
                     <label for="equipoVisitante"></label>
                     <select name="equipoVisitante" id="equipo" required="required">
                         <option disabled selected>Equipo visitante</option>
@@ -90,10 +93,12 @@
                         <option value="Valladolid">Valladolid</option>
                         <option value="Villarreal">Villarreal</option>
                     </select>
-                    <button type="submit" class="btn-acciones">Predecir Partido</button>
+                    <i></i>
+                </div>
+                
+                <button type="submit" class="btn-acciones">Predecir Partido</button>
 
-                </form>
-            </div>            
+            </form>            
 
             <div class="error">
                 <p>{{error}}</p>

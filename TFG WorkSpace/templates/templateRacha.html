@@ -37,36 +37,38 @@
             <p class="texto-informacion">Introduce el nombre del equipo que quieras consultar y haz click en el boton "Calcular la racha" 
                 para ver la racha en el último mes del equipo</p>
 
-            <div class="zona-seleccion-equipo">
-                <form action="/racha-calculada" method="post">
+                <form class="zona-formulario" action="/racha-calculada" method="post">
+                    <div class="content-select">
+                        <label for="equipo"></label>
+                        <select name="equipoLocal" id="equipo" required="required">
+                            <option disabled selected>Equipo local</option>
+                            <option value="Almeria">Almeria</option>
+                            <option value="Athletic Bilbao">Athletic Bilbao</option>
+                            <option value="Atletico Madrid">Atletico Madrid</option>
+                            <option value="Barcelona">Barcelona</option>
+                            <option value="Cadiz">Cadiz</option>
+                            <option value="Celta Vigo">Celta Vigo</option>
+                            <option value="Elche">Elche</option>
+                            <option value="Espanyol">Espanyol</option>
+                            <option value="Getafe">Getafe</option>
+                            <option value="Girona">Girona</option>
+                            <option value="Mallorca">Mallorca</option>
+                            <option value="Osasuna">Osasuna</option>
+                            <option value="Rayo Vallecano">Rayo Vallecano</option>
+                            <option value="Real Betis">Real Betis</option>
+                            <option value="Real Madrid">Real Madrid</option>
+                            <option value="Real Sociedad">Real Sociedad</option>
+                            <option value="Sevilla">Sevilla</option>
+                            <option value="Valencia">Valencia</option>
+                            <option value="Valladolid">Valladolid</option>
+                            <option value="Villarreal">Villarreal</option>
+                        </select> 
+                        <i></i>
+                    </div>
 
-                <label for="equipo"></label>
-                <select name="equipoLocal" id="equipo" required="required">
-                    <option disabled selected>Equipo local</option>
-                    <option value="Almeria">Almeria</option>
-                    <option value="Athletic Bilbao">Athletic Bilbao</option>
-                    <option value="Atletico Madrid">Atletico Madrid</option>
-                    <option value="Barcelona">Barcelona</option>
-                    <option value="Cadiz">Cadiz</option>
-                    <option value="Celta Vigo">Celta Vigo</option>
-                    <option value="Elche">Elche</option>
-                    <option value="Espanyol">Espanyol</option>
-                    <option value="Getafe">Getafe</option>
-                    <option value="Girona">Girona</option>
-                    <option value="Mallorca">Mallorca</option>
-                    <option value="Osasuna">Osasuna</option>
-                    <option value="Rayo Vallecano">Rayo Vallecano</option>
-                    <option value="Real Betis">Real Betis</option>
-                    <option value="Real Madrid">Real Madrid</option>
-                    <option value="Real Sociedad">Real Sociedad</option>
-                    <option value="Sevilla">Sevilla</option>
-                    <option value="Valencia">Valencia</option>
-                    <option value="Valladolid">Valladolid</option>
-                    <option value="Villarreal">Villarreal</option>
-                </select>
-                <button type="submit" class="btn-acciones">Calcular la racha</button>
-            </div>    
-            
+                
+                    <button type="submit" class="btn-acciones">Calcular la racha</button>    
+                </form>
 
             <div class="resultado">
                 <p>{{racha_texto}}</p>
@@ -82,7 +84,7 @@
                     <button type="submit" class="btn-acciones">Predecir partido</button>
                 </form>
             </div>
-            </form>
+
             
         </div>
         

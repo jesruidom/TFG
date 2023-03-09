@@ -38,62 +38,68 @@
                 del partido buscado.
             </p>
 
-            <div class="zona-seleccion-equipo">
-                <form action="/prediccion-realizada" method="post">
+                <form  class="zona-formulario" action="/prediccion-realizada" method="post">
 
-                    <label for="equipoLocal"></label>
-                    <select name="equipoLocal" id="equipo" required="required">
-                        <option disabled selected>Equipo local</option>
-                        <option value="Almeria">Almeria</option>
-                        <option value="Athletic Bilbao">Athletic Bilbao</option>
-                        <option value="Atletico Madrid">Atletico Madrid</option>
-                        <option value="Barcelona">Barcelona</option>
-                        <option value="Cadiz">Cadiz</option>
-                        <option value="Celta Vigo">Celta Vigo</option>
-                        <option value="Elche">Elche</option>
-                        <option value="Espanyol">Espanyol</option>
-                        <option value="Getafe">Getafe</option>
-                        <option value="Girona">Girona</option>
-                        <option value="Mallorca">Mallorca</option>
-                        <option value="Osasuna">Osasuna</option>
-                        <option value="Rayo Vallecano">Rayo Vallecano</option>
-                        <option value="Real Betis">Real Betis</option>
-                        <option value="Real Madrid">Real Madrid</option>
-                        <option value="Real Sociedad">Real Sociedad</option>
-                        <option value="Sevilla">Sevilla</option>
-                        <option value="Valencia">Valencia</option>
-                        <option value="Valladolid">Valladolid</option>
-                        <option value="Villarreal">Villarreal</option>
-                    </select>
-
-                    <label for="equipoVisitante"></label>
-                    <select name="equipoVisitante" id="equipo" required="required">
-                        <option disabled selected>Equipo visitante</option>
-                        <option value="Almeria">Almeria</option>
-                        <option value="Athletic Bilbao">Athletic Bilbao</option>
-                        <option value="Atletico Madrid">Atletico Madrid</option>
-                        <option value="Barcelona">Barcelona</option>
-                        <option value="Cadiz">Cadiz</option>
-                        <option value="Celta Vigo">Celta Vigo</option>
-                        <option value="Elche">Elche</option>
-                        <option value="Espanyol">Espanyol</option>
-                        <option value="Getafe">Getafe</option>
-                        <option value="Girona">Girona</option>
-                        <option value="Mallorca">Mallorca</option>
-                        <option value="Osasuna">Osasuna</option>
-                        <option value="Rayo Vallecano">Rayo Vallecano</option>
-                        <option value="Real Betis">Real Betis</option>
-                        <option value="Real Madrid">Real Madrid</option>
-                        <option value="Real Sociedad">Real Sociedad</option>
-                        <option value="Sevilla">Sevilla</option>
-                        <option value="Valencia">Valencia</option>
-                        <option value="Valladolid">Valladolid</option>
-                        <option value="Villarreal">Villarreal</option>
-                    </select>
+                    <div class="content-select">
+                        <label for="equipoLocal"></label>
+                        <select name="equipoLocal" id="equipo" required="required">
+                            <option disabled selected>Equipo local</option>
+                            <option value="Almeria">Almeria</option>
+                            <option value="Athletic Bilbao">Athletic Bilbao</option>
+                            <option value="Atletico Madrid">Atletico Madrid</option>
+                            <option value="Barcelona">Barcelona</option>
+                            <option value="Cadiz">Cadiz</option>
+                            <option value="Celta Vigo">Celta Vigo</option>
+                            <option value="Elche">Elche</option>
+                            <option value="Espanyol">Espanyol</option>
+                            <option value="Getafe">Getafe</option>
+                            <option value="Girona">Girona</option>
+                            <option value="Mallorca">Mallorca</option>
+                            <option value="Osasuna">Osasuna</option>
+                            <option value="Rayo Vallecano">Rayo Vallecano</option>
+                            <option value="Real Betis">Real Betis</option>
+                            <option value="Real Madrid">Real Madrid</option>
+                            <option value="Real Sociedad">Real Sociedad</option>
+                            <option value="Sevilla">Sevilla</option>
+                            <option value="Valencia">Valencia</option>
+                            <option value="Valladolid">Valladolid</option>
+                            <option value="Villarreal">Villarreal</option>
+                        </select>
+                        <i></i>
+                    </div>
+                    
+                    <div class="content-select">
+                        <label for="equipoVisitante"></label>
+                        <select name="equipoVisitante" id="equipo" required="required">
+                            <option disabled selected>Equipo visitante</option>
+                            <option value="Almeria">Almeria</option>
+                            <option value="Athletic Bilbao">Athletic Bilbao</option>
+                            <option value="Atletico Madrid">Atletico Madrid</option>
+                            <option value="Barcelona">Barcelona</option>
+                            <option value="Cadiz">Cadiz</option>
+                            <option value="Celta Vigo">Celta Vigo</option>
+                            <option value="Elche">Elche</option>
+                            <option value="Espanyol">Espanyol</option>
+                            <option value="Getafe">Getafe</option>
+                            <option value="Girona">Girona</option>
+                            <option value="Mallorca">Mallorca</option>
+                            <option value="Osasuna">Osasuna</option>
+                            <option value="Rayo Vallecano">Rayo Vallecano</option>
+                            <option value="Real Betis">Real Betis</option>
+                            <option value="Real Madrid">Real Madrid</option>
+                            <option value="Real Sociedad">Real Sociedad</option>
+                            <option value="Sevilla">Sevilla</option>
+                            <option value="Valencia">Valencia</option>
+                            <option value="Valladolid">Valladolid</option>
+                            <option value="Villarreal">Villarreal</option>
+                        </select>
+                        <i></i>
+                    </div>
+                    
                     <button type="submit" class="btn-acciones">Predecir Partido</button>
 
                 </form>
-            </div>            
+            
 
             <div class="resultado">
                 <p>{{puntos_texto}}</p>

@@ -4,11 +4,14 @@
   --azul-botones: hsl(196, 80%, 52%);
   --dorado-fonodo-opacidad: hsla(46, 65%, 52%, 0.6);
   --rojo-error: hsl(0, 100%, 50%);
+  --verde-borde-botones-seleccionados: hsl(84, 100%, 59%);
+  --verde-color-opciones: hsl(151, 54%, 80%);
 
   --tipo-letra: sans-serif;
   --tamaño-titulo-principal: 50px;
   --tamaño-titulo-secundario: 40px;
   --tamaño-texto: 20px;
+  --tamaño-texto-botones: 16px
 }
 
 *{
@@ -54,7 +57,7 @@ html, body{
   padding: 10px 20px;
   text-align: center;
   display: inline-block;
-  font-size: 16px;
+  font-size: var(--tamaño-texto-botones);
   cursor: pointer;
   
   border: 2px solid white;
