@@ -133,5 +133,20 @@
   }
   
   .btn-acciones{
-    background-color: var(--azul-botones)
+    color: black;
+    background-color: var(--azul-botones);
+  
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    
+    border: 2px solid var(--dorado-botones);
+    border-radius: 6px;
+  }
+  
+  .btn-acciones:hover{
+    color: black;
+    border: 2px solid greenyellow;
   }
