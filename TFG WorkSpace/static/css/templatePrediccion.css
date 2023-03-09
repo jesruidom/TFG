@@ -95,7 +95,7 @@ html, body{
 
 .texto-informacion{
   margin: 2%;
-  margin-top: -8%;
+  margin-top: -6%;
   font-family: var(--tipo-letra);
   font-size: var(--tamaño-texto);
   /*text-align: center;*/
@@ -125,7 +125,7 @@ html, body{
   display: flex;
   justify-content: flex-end;
   margin-right: 2%;
-  margin-top: -8%;
+  margin-top: -6%;
 
   font-family: var(--tipo-letra);
 }

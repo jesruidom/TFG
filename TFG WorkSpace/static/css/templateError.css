@@ -95,7 +95,7 @@
   
   .texto-informacion{
     margin: 2%;
-    margin-top: -8%;
+    margin-top: -6%;
     font-family: var(--tipo-letra);
     font-size: var(--tamaño-texto);
     /*text-align: center;*/
