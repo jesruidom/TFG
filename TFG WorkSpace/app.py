@@ -167,12 +167,20 @@ def puntuacionPersonalizada(equipo, numJornada):
         dataPersonalizado = json.load(file)    
         diccionarioDatosPersonalizado = dataPersonalizado['data']
         listaClasificacionPersonalizada = diccionarioDatosPersonalizado['table']
+
+        maximosGolesFavor = golesFavorMax(listaClasificacionPersonalizada)
+        maximosgolesContra = golesContraMax(listaClasificacionPersonalizada)
+
         while i<len(listaClasificacionPersonalizada):
             if listaClasificacionPersonalizada[i].get('name') == equipo:
-                puntos = int(listaClasificacionPersonalizada[i].get('points'))
+                puesto = int(listaClasificacionPersonalizada[i].get('rank'))
+                golesFavor = int(listaClasificacionPersonalizada[i].get('goals_scored'))
+                golesContra = int(listaClasificacionPersonalizada[i].get('goals_conceded'))
                 break
             i += 1    
-    return puntos
+    puestoEquilibrado = 21 - puesto
+    puntuacionFinal = puestoEquilibrado/20 * 0.45 + golesFavor/maximosGolesFavor * 0.275 - golesContra/maximosgolesContra * 0.275 #Hay que eliminar la racha ya que no se puede obtener de estos datos
+    return puntuacionFinal
 
 ############################################## FIN SECCION #####################################################
 #######SECCIÓN DE LAS FUNCIONES NECESARIAS PARA HACER LAS PREDICCIONES Y EL TRATAMIENTO DE DATOS CORRECTO#######
@@ -228,10 +236,31 @@ def paginaPredecirPersonalizada():
 def funcPredecirPersonalizada():  
     numJornada = int(request.form['numJornada'])  
     equipoLocal = str(request.form['equipoLocal'])
-    puntos = puntuacionPersonalizada(equipoLocal,numJornada)
-    
-    return render_template('templatePrediccionPersonalizada.html', puntos_texto = f'El {equipoLocal} tenia en la jornada {numJornada} {puntos} puntos.') 
-    
+    equipoVisitante = str(request.form['equipoVisitante'])
+
+    puntuacionLocal = puntuacionPersonalizada(equipoLocal, numJornada) + 0.15 # Hay que añadirle algun punto por jugar de local
+    puntuacionVisitante = puntuacionPersonalizada(equipoVisitante,numJornada)
+
+    diferenciaPuntos = puntuacionLocal - puntuacionVisitante
+    puntosAbsolutos = abs(diferenciaPuntos)
+#Hay que crear una excepción para que de error en caso de se seleccione dos veces el mismo equipo
+    if equipoLocal == equipoVisitante:
+        return render_template('templateError.html', error = f'ERROR',
+                               texto_de_error = f'Has elegido dos veces el mismo equipo, vuelve a elegir para predecir el partido!')
+    else:
+        if puntosAbsolutos <= 0.15:
+            return render_template('templatePrediccionPersonalizada.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} terminará en EMPATE.',
+                                puntos_local = f'La puntuación del {equipoLocal} es: {puntuacionLocal}',
+                                puntos_visitante = f'La puntuación del {equipoVisitante} es: {puntuacionVisitante}')
+        else:
+            if puntuacionLocal>puntuacionVisitante:
+                return render_template('templatePrediccionPersonalizada.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} lo GANARÁ el {equipoLocal} jugando como local.',
+                                puntos_local = f'La puntuación del {equipoLocal} es: {puntuacionLocal}',
+                                puntos_visitante = f'La puntuación del {equipoVisitante} es: {puntuacionVisitante}')
+            else:
+                return render_template('templatePrediccionPersonalizada.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} lo GANARÁ el {equipoVisitante} jugando como visitante.',
+                                puntos_local = f'La puntuación del {equipoLocal} es: {puntuacionLocal}',
+                                puntos_visitante = f'La puntuación del {equipoVisitante} es: {puntuacionVisitante}')
 
 @app.route("/racha", methods=['POST'])
 def paginaRacha():
