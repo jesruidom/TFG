@@ -115,8 +115,6 @@ def comparacion(equipoLocal, equipoVisitante):
             res = "El partido lo GANARA el", equipoVisitante,"con una puntuacion de", puntuacionVisitante, "puntuacion local: ", puntuacionLocal
     return res
 
-
-print("\n----------------------------------------------------------\n")
 equipoLocal = 'Sevilla'
 equipoVisitante = 'Barcelona'
 #print("El", equipoLocal, "tiene", puntLocal(equipoLocal), "puntos")

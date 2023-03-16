@@ -10,12 +10,14 @@ API_secret = 'izA1NKQSRw41PEN2X3r7asSILbxm4B1n'
 ##################################################################################################################
 #SECCIÓN EN LA QUE SE EXTRAEN Y SE MODIFICAN LOS DATOS DE LA CLASIFICACIÓN DE LA API PARA TRATARLOS ADECUADAMENTE#
 
-url = f'https://livescore-api.com/api-client/competitions/standings.json?competition_id=3&key={API_key}&secret={API_secret}'
-response = urllib.request.urlopen(url)
-contenido = response.read()
-contenidoJSON = json.loads(contenido)
-diccionarioDatos =contenidoJSON['data']
-listaClasificacion = diccionarioDatos['table']
+def extraeDatos():
+    url = f'https://livescore-api.com/api-client/competitions/standings.json?competition_id=3&key={API_key}&secret={API_secret}'
+    response = urllib.request.urlopen(url)
+    contenido = response.read()
+    contenidoJSON = json.loads(contenido)
+    diccionarioDatos =contenidoJSON['data']
+    listaClasificacion = diccionarioDatos['table']
+    return listaClasificacion
 
 ############################################## FIN SECCION #####################################################
 #SECCIÓN EN LA QUE SE EXTRAEN Y SE MODIFICAN LOS DATOS DE LA CLASIFICACIÓN DE LA API PARA TRATARLOS ADECUADAMENTE#
@@ -141,6 +143,7 @@ def creaRacha(equipo, listaPartidos):
 #Funcion que genera la puntuación de cada equipo segun los puntos en la clasificacion, los goles a favor, goles en contra y la puntuacion de su racha
 def puntuacion(equipo):
     i = 0
+    listaClasificacion = extraeDatos()
     datosPartidos = obtenPartidos(equipo)
     numPartidosJugadosUltimoMes = len(datosPartidos)
     puntRacha = float(creaRacha(equipo, datosPartidos)[0])
@@ -157,6 +160,19 @@ def puntuacion(equipo):
     puestoEquilibrado = 21 - puesto
     puntuacionFinal = puestoEquilibrado/20 * 0.35 + golesFavor/maximosGolesFavor * 0.15 - golesContra/maximosgolesContra * 0.15 + puntRacha/numPartidosJugadosUltimoMes * 0.35
     return puntuacionFinal
+
+def puntuacionPersonalizada(equipo, numJornada):
+    with open(f'./TFG WorkSpace/jornadas/jornada{numJornada}.json') as file:
+        i = 0
+        dataPersonalizado = json.load(file)    
+        diccionarioDatosPersonalizado = dataPersonalizado['data']
+        listaClasificacionPersonalizada = diccionarioDatosPersonalizado['table']
+        while i<len(listaClasificacionPersonalizada):
+            if listaClasificacionPersonalizada[i].get('name') == equipo:
+                puntos = int(listaClasificacionPersonalizada[i].get('points'))
+                break
+            i += 1    
+    return puntos
 
 ############################################## FIN SECCION #####################################################
 #######SECCIÓN DE LAS FUNCIONES NECESARIAS PARA HACER LAS PREDICCIONES Y EL TRATAMIENTO DE DATOS CORRECTO#######
@@ -202,7 +218,19 @@ def funcPredecir():
                 return render_template('templatePrediccion.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} lo GANARÁ el {equipoVisitante} jugando como visitante.',
                                 puntos_local = f'La puntuación del {equipoLocal} es: {puntuacionLocal}',
                                 puntos_visitante = f'La puntuación del {equipoVisitante} es: {puntuacionVisitante}')
+            
+            
+@app.route("/predecir-personalizado", methods=['POST'])
+def paginaPredecirPersonalizada():
+    return render_template('templatePrediccionPersonalizada.html')  
+
+@app.route("/prediccion-personalizada-realizada", methods=['POST'])
+def funcPredecirPersonalizada():  
+    numJornada = int(request.form['numJornada'])  
+    equipoLocal = str(request.form['equipoLocal'])
+    puntos = puntuacionPersonalizada(equipoLocal,numJornada)
     
+    return render_template('templatePrediccionPersonalizada.html', puntos_texto = f'El {equipoLocal} tenia en la jornada {numJornada} {puntos} puntos.') 
     
 
 @app.route("/racha", methods=['POST'])
