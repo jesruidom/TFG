@@ -161,7 +161,7 @@ def puntuacion(equipo):
     puntuacionFinal = puestoEquilibrado/20 * 0.35 + golesFavor/maximosGolesFavor * 0.15 - golesContra/maximosgolesContra * 0.15 + puntRacha/numPartidosJugadosUltimoMes * 0.35
     return puntuacionFinal
 
-def puntuacionPersonalizada(equipo, numJornada):
+def puntuacionPersonalizada(equipo, numJornada, porcentajePuesto, porcentajeGolesFavor, porcentajeGolesContra):
     with open(f'./TFG WorkSpace/jornadas/jornada{numJornada}.json') as file:
         i = 0
         dataPersonalizado = json.load(file)    
@@ -179,7 +179,7 @@ def puntuacionPersonalizada(equipo, numJornada):
                 break
             i += 1    
     puestoEquilibrado = 21 - puesto
-    puntuacionFinal = puestoEquilibrado/20 * 0.45 + golesFavor/maximosGolesFavor * 0.275 - golesContra/maximosgolesContra * 0.275 #Hay que eliminar la racha ya que no se puede obtener de estos datos
+    puntuacionFinal = puestoEquilibrado/20 * porcentajePuesto/100 + golesFavor/maximosGolesFavor * porcentajeGolesFavor/100 - golesContra/maximosgolesContra * porcentajeGolesContra/100 #Hay que eliminar la racha ya que no se puede obtener de estos datos
     return puntuacionFinal
 
 ############################################## FIN SECCION #####################################################
@@ -238,8 +238,12 @@ def funcPredecirPersonalizada():
     equipoLocal = str(request.form['equipoLocal'])
     equipoVisitante = str(request.form['equipoVisitante'])
 
-    puntuacionLocal = puntuacionPersonalizada(equipoLocal, numJornada) + 0.15 # Hay que añadirle algun punto por jugar de local
-    puntuacionVisitante = puntuacionPersonalizada(equipoVisitante,numJornada)
+    porcentajePuesto = int(request.form['porcentajePuesto'])
+    porcentajeGolesFavor = int(request.form['porcentajeGolesFavor'])
+    porcentajeGolesContra = int(request.form['porcentajeGolesContra'])
+
+    puntuacionLocal = puntuacionPersonalizada(equipoLocal, numJornada, porcentajePuesto, porcentajeGolesFavor, porcentajeGolesContra) + 0.15 # Hay que añadirle algun punto por jugar de local
+    puntuacionVisitante = puntuacionPersonalizada(equipoVisitante,numJornada, porcentajePuesto, porcentajeGolesFavor, porcentajeGolesContra)
 
     diferenciaPuntos = puntuacionLocal - puntuacionVisitante
     puntosAbsolutos = abs(diferenciaPuntos)
