@@ -1,7 +1,8 @@
 :root {
   --color-cabecera: hsl(3, 0%, 10%);
   --dorado-botones: hsl(46, 65%, 52%);
-  --azul-botones: hsl(196, 80%, 52%);
+  --azul-botones: hsl(0, 100%, 27%);
+  /*--azul-botones: hsl(196, 80%, 52%);*/
   --dorado-fonodo-opacidad: hsla(46, 65%, 52%, 0.6);
   --rojo-error: hsl(0, 100%, 50%);
   --verde-borde-botones-seleccionados: hsl(84, 100%, 59%);
@@ -67,6 +68,7 @@ html, body{
 .btn-outline-success:hover{
   color: black;
   background-color: var(--azul-botones);
+  color: white;
 }
 
 /*================================= FINAL ZONA MENU =================================*/
@@ -99,7 +101,17 @@ html, body{
 
   font-family: var(--tipo-letra);
   font-size: var(--tamaño-texto);
-  /*text-align: center;*/
+  text-align: center;
+}
+
+.texto-informacion2{
+  margin: 2%;
+  margin-top: -5%;
+
+  font-family: var(--tipo-letra);
+  font-size: var(--tamaño-texto);
+  font-weight: bold;
+  text-align: center;
 }
 
 .zona-formulario{
@@ -176,7 +188,7 @@ html, body{
 }
 
 .btn-acciones{
-  color: black;
+  color: white;
   background-color: var(--azul-botones);
 
   padding: 10px 20px;
@@ -190,8 +202,8 @@ html, body{
 }
 
 .btn-acciones:hover{
-  color: black;
-  border: 2px solid var(--verde-borde-botones-seleccionados)
+  border: 2px solid var(--verde-borde-botones-seleccionados);
+  color: white;
 }
 
 /*################################################################################################################
@@ -232,7 +244,7 @@ html, body{
 }
  
 .content-select select:hover{
-	background: var(--azul-botones);
+	background: var(--verde-borde-botones-seleccionados);
 }
  
 /* 

@@ -1,7 +1,8 @@
 :root {
     --color-cabecera: hsl(3, 0%, 10%);
     --dorado-botones: hsl(46, 65%, 52%);
-    --azul-botones: hsl(196, 80%, 52%);
+    --burdeos-botones: hsl(0, 100%, 27%);
+    /*--azul-botones: hsl(196, 80%, 52%);*/
     --dorado-fonodo-opacidad: hsla(46, 65%, 52%, 0.6);
     --rojo-error: hsl(0, 100%, 50%);
     --verde-borde-botones-seleccionados: hsl(84, 100%, 59%);
@@ -65,8 +66,8 @@
   }
   
   .btn-outline-success:hover{
-    color: black;
-    background-color: var(--azul-botones);
+    background-color: var(--burdeos-botones);
+    color: white;
   }
   
   /*================================= FINAL ZONA MENU =================================*/
@@ -135,8 +136,8 @@
   }
   
   .btn-acciones{
-    color: black;
-    background-color: var(--azul-botones);
+    color: white;
+    background-color: var(--burdeos-botones);
   
     padding: 10px 20px;
     text-align: center;
@@ -191,7 +192,8 @@
 }
  
 .content-select select:hover{
-	background: var(--azul-botones);
+	background: var(--burdeos-botones);
+  color: white;
 }
  
 /* 
