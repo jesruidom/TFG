@@ -382,6 +382,25 @@ def calculaRacha():
     return render_template('templateRacha.html', racha_texto = f'El {equipo} ha jugado {len(ultimosPartidos)} partidos en el último mes, ha ganado {rachaLocal[1]}, empatado {rachaLocal[2]} y perdido {rachaLocal[3]}.', 
         racha_texto2 = f'Por tanto, ha obteniendo una puntuación de {rachaLocal[0]}.')
 
+@app.route("/racha-personalizada", methods=['POST'])
+def paginaRachaPersonalizada():
+    return render_template('templateRachaPersonalizada.html')
+
+@app.route("/racha-personalizada-calculada", methods=['POST'])
+def calculaRachaPersonalizada():
+    equipo = str(request.form['equipoLocal'])
+    fechaInicio = request.form['fecha-inicio']
+    fechaFin = request.form['fecha-fin']
+
+    racha = float(rachaPersonalizada(equipo, fechaInicio, fechaFin)[0])
+    victorias = int(rachaPersonalizada(equipo, fechaInicio, fechaFin)[1])
+    empates = int(rachaPersonalizada(equipo, fechaInicio, fechaFin)[2])
+    derrotas = int(rachaPersonalizada(equipo, fechaInicio, fechaFin)[3])
+    numPartidos = int(rachaPersonalizada(equipo, fechaInicio, fechaFin)[4])
+
+    return render_template('templateRachaPersonalizada.html', racha_texto = f'El {equipo} ha jugado {numPartidos} partidos desde el {fechaInicio} hasta el {fechaFin} y ha ganado {victorias}, empatado {empates} y perdido {derrotas}.', 
+        racha_texto2 = f'Por tanto, ha obteniendo una puntuación de {racha}.')
+
 @app.route("/documentacion", methods=['POST'])
 def paginaDocumentacion():
     return render_template('templateDocumentacion.html')

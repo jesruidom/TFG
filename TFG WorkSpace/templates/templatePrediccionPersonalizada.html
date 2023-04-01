@@ -25,6 +25,10 @@
                     <button type="submit" class="btn-outline-success">Calculadora de racha</button>
                 </form>
 
+                <form action="/racha-personalizada" method="post">
+                    <button type="submit" class="btn-outline-success">Calculadora de racha personalizada</button>
+                </form>
+
                 <form action="/documentacion" method="post">
                     <button type="submit" class="btn-outline-success">Documentación</button>
                 </form>
@@ -114,9 +118,7 @@
                         </select>
                         <i></i>
                     </div>
-                </div>
-
-                
+                </div>                
                 
                 <div class="zona-parametros">
                     <input type="number" placeholder="% Puesto" id="parametros" name="porcentajePuesto" min="0" max="100">
@@ -154,10 +156,10 @@
 
             <div class="botones-abajo">
                 <form action="/predecir-personalizado" method="post">
-                    <button type="submit" class="btn-acciones">Predecir otro partido</button>
+                    <button type="submit" class="btn-acciones">Predecir otro partido personalizado</button>
                 </form>
-                <form action="/racha" method="post">
-                    <button type="submit" class="btn-acciones">Ir a calcular la racha</button>
+                <form action="/racha-personalizada" method="post">
+                    <button type="submit" class="btn-acciones">Ir a calcular racha personalizada</button>
                 </form>
             </div>
         </div>

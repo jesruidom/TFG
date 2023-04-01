@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Web TFG</title>
         <link rel="icon" type="image/png" href="{{url_for('static', filename='images/logoBurdeos.png')}}">
-        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/templatePrediccionPersonalizada.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/templateErrorPersonalizado.css')}}">
     </head>
 
     <body>
@@ -24,6 +24,10 @@
                 <form action="/racha" method="post">
                     <button type="submit" class="btn-outline-success">Calculadora de racha</button>
                 </form>
+                
+                <form action="/racha-personalizada" method="post">
+                    <button type="submit" class="btn-outline-success">Calculadora de racha personalizada</button>
+                </form>
 
                 <form action="/documentacion" method="post">
                     <button type="submit" class="btn-outline-success">Documentación</button>
@@ -34,9 +38,12 @@
         <div class="zona-informacion">
 
             <h1 class="titulo">Predicción de partido</h1>
-            <p class="texto-informacion">Introduce los nombres de los equipos que disputarán el partido. Presiona el botón "Predecir partido" y la aplicación predecirá el ganador
-                del partido buscado.
+            <p class="texto-informacion">Introduce el número de la jornada a predecir y los nombres de los equipos que disputarán el partido. A continuación, elige el valor en 
+                porcentaje que le quieras dar a cada parámetro según su importancia (Valores permitidos: 0-100). En caso de querer crear una racha para los equipos elegir el valor
+                en porcentaje de la importancia del parámetro y escoger la fecha de inicio y de fin para la racha. Presiona el botón "Predecir partido" y la aplicación predecirá 
+                el ganador del partido buscado. 
             </p>
+            <p class="texto-informacion2">SI NO SE DESEA CREAR UNA RACHA NO MODIFICAR EL VALOR DEL PORCENTAJE, POR DEFECTO ESTÁ EN 0</p>
 
             <form  class="zona-formulario" action="/prediccion-personalizada-realizada" method="post">
 
@@ -44,13 +51,14 @@
                     <div class="content-select">
                         <label for="numJornada"></label>
                         <select name="numJornada" id="numJornada" required="required">
-                            <option disabled selected>Numero de jornada</option>
+                            <option disabled selected>Jornada</option>
                             <option value="20">20</option>
                             <option value="21">21</option>
                             <option value="22">22</option>
                             <option value="23">23</option>
                             <option value="24">24</option>
                             <option value="25">25</option>
+                            <option value="26">26</option>
                         </select>
                         <i></i>
                     </div>
@@ -110,18 +118,17 @@
                         </select>
                         <i></i>
                     </div>
-                </div>
-
-                
+                </div>                
                 
                 <div class="zona-parametros">
                     <input type="number" placeholder="% Puesto" id="parametros" name="porcentajePuesto" min="0" max="100">
                     <input type="number" placeholder="% Goles a favor" id="parametros" name="porcentajeGolesFavor" min="0" max="100">
                     <input type="number" placeholder="% Goles en contra" id="parametros" name="porcentajeGolesContra" min="0" max="100">
-                    <input type="number" placeholder="% Racha" id="parametros" name="porcentajeRacha" min="0" max="100">
                 </div>
 
                 <div class="zona-fechas">
+                    <label id="fecha">% Racha:</label>
+                    <input type="number" placeholder="% Racha" id="parametros" name="porcentajeRacha" value="0" min="0" max="100">
                     <label id="fecha">Fecha inicio de la racha:</label>
                     <input type="date" placeholder="% Puesto" id="parametros" name="fecha-inicio">
                     <label id="fecha">Fecha fin de la racha:</label>

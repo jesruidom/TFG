@@ -1,0 +1,227 @@
+:root {
+  --color-cabecera: hsl(3, 0%, 10%);
+  --dorado-botones: hsl(46, 65%, 52%);
+  --burdeos-botones: hsl(0, 100%, 27%);
+  /*--azul-botones: hsl(196, 80%, 52%);*/
+  --dorado-fonodo-opacidad: hsla(46, 65%, 52%, 0.6);
+  --rojo-error: hsl(0, 100%, 50%);
+  --verde-borde-botones-seleccionados: hsl(84, 100%, 59%);
+  --verde-color-opciones: hsl(151, 54%, 80%);
+
+  --tipo-letra: sans-serif;
+  --tamaño-titulo-principal: 50px;
+  --tamaño-titulo-secundario: 40px;
+  --tamaño-texto: 20px;
+  --tamaño-texto-botones: 16px
+}
+
+*{
+  /*outline: 1px solid red;*/
+}
+
+html, body{
+  display: flex;
+  flex-direction: column;
+  height:100vh;
+  margin: 0;
+  background: url("../images/estadiofondo.jpg") center no-repeat;
+}
+/*================================= COMIENZO ZONA MENU =================================*/
+
+.zona-cabecera{
+  height:8%;
+  width: clamp(100px,100%);
+  background-color: var(--color-cabecera);
+  font-family: var(--tipo-letra);
+  
+  display:flex;
+  align-items: center;
+  gap: 1%;
+}
+
+.logo{
+  width: 100px;
+  height: 100px;
+  margin-left: 1%;
+}
+
+.botones{
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.btn-outline-success{
+  color: black;
+  background-color: var(--dorado-botones);
+
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: var(--tamaño-texto-botones);
+  cursor: pointer;
+  
+  border: 2px solid white;
+  border-radius: 6px;
+}
+
+.btn-outline-success:hover{
+  color: white;
+  background-color: var(--burdeos-botones);
+}
+
+/*================================= FINAL ZONA MENU =================================*/
+
+/*================================= COMIENZO ZONA INFORMACION =================================*/
+
+.zona-informacion{
+  /*flex: 1;*/
+  display: flex;
+  flex-direction: column;
+  height: 92%;
+  width: clamp(100px,100%);
+  margin: 3%;
+  background-color: var(--dorado-fonodo-opacidad);
+  justify-content: space-between;
+  /*align-items: center; alinea al centro de manera horizontal*/
+  /*justify-content: center; alinea al centro de manera vertical*/
+}
+
+.titulo{
+  margin: 2%;
+
+  font-family: var(--tipo-letra);
+  font-size: var(--tamaño-titulo-secundario);
+}
+
+.texto-informacion{
+  margin: 2%;
+  margin-top: -6%;
+  font-family: var(--tipo-letra);
+  font-size: var(--tamaño-texto);
+  /*text-align: center;*/
+}
+
+.zona-formulario{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem
+}
+
+.zona-options-equipos{
+  display: flex;
+  justify-content: center;
+}
+
+.zona-fechas{
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+#fechas{
+  font-family: var(--tipo-letra);
+  font-size: var(--tamaño-texto);
+}
+
+.boton-predecir{
+  display: flex;
+  justify-content: center;
+}
+
+.resultado{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--tipo-letra);
+  font-size: var(--tamaño-texto);
+}
+
+.botones-abajo{
+  display: flex;
+  margin: 2%;  
+  gap: 0.5rem;
+}
+
+.btn-acciones{
+  color: white;
+  background-color: var(--burdeos-botones);
+
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: var(--tamaño-texto-botones);
+  cursor: pointer;
+  
+  border: 2px solid var(--dorado-botones);
+  border-radius: 6px;
+}
+
+.btn-acciones:hover{
+  color: white;
+  border: 2px solid var(--verde-borde-botones-seleccionados);
+}
+
+/*################################################################################################################
+#######################################SECCIÓN FORMATO DEL FORMULARIO #########################################*/
+
+.content-select select{
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+/* Eliminamos la fecha que por defecto aparece en el desplegable */
+.content-select select::-ms-expand {
+  display: none;
+}
+
+.content-select{
+	width: 180px;
+	position: relative;
+  margin-right: 0.5rem;
+}
+ 
+.content-select select{
+	display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  padding: 7px 10px;
+  height: 42px;
+
+	background: var(--verde-color-opciones);
+	color: black;
+	font-size: var(--tamaño-texto-botones);
+	
+	border: 2px solid var(--dorado-botones);
+  border-radius: 6px;
+  position: relative;
+  transition: all 0.25s ease;
+}
+ 
+.content-select select:hover{
+	background: var(--verde-borde-botones-seleccionados);
+}
+ 
+/* 
+Creamos la fecha que aparece a la izquierda del select.
+Realmente este elemento es un cuadrado que sólo tienen
+dos bordes con color y que giramos con transform: rotate(-45deg);
+*/
+.content-select i{
+	position: absolute;
+	right: 20px;
+	top: calc(50% - 13px);
+	width: 16px;
+	height: 16px;
+	display: block;
+	border-left:4px solid #2AC176;
+	border-bottom:4px solid #2AC176;
+	transform: rotate(-45deg); /* Giramos el cuadrado */
+	transition: all 0.25s ease;
+}
+ 
+.content-select:hover i{
+	margin-top: 3px;
+}

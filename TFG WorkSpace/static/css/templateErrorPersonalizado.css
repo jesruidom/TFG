@@ -89,20 +89,69 @@
   
   .titulo{
     margin: 2%;
+    margin-bottom: -8%;
   
     font-family: var(--tipo-letra);
     font-size: var(--tamaño-titulo-secundario);
   }
   
   .texto-informacion{
-    margin: 2%;
-    margin-top: -6%;
+    margin-left: 2%;
+    margin-bottom: -8%;
+  
     font-family: var(--tipo-letra);
     font-size: var(--tamaño-texto);
-    /*text-align: center;*/
+    text-align: center;
+  }
+  
+  .texto-informacion2{
+    margin-left: 2%;
+    margin-bottom: -7%;
+  
+    font-family: var(--tipo-letra);
+    font-size: var(--tamaño-texto);
+    font-weight: bold;
+    text-align: center;
   }
   
   .zona-formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem
+  }
+  
+  .zona-options-equipos{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .zona-parametros{
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  #parametros{
+    background-color: var(--verde-color-opciones);
+    height: 40px;
+    width: 120px;
+    border: 2px solid var(--dorado-botones);
+    border-radius: 6px;
+  }
+  
+  .zona-fechas{
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  #fechas{
+    font-family: var(--tipo-letra);
+    font-size: var(--tamaño-texto);
+  }
+  
+  .boton-predecir{
     display: flex;
     justify-content: center;
   }
@@ -110,7 +159,8 @@
   .error{
     display: flex;
     justify-content: center;
-    margin: -3%;
+    margin-top: -7%;
+    margin-bottom: -3%;
 
     font-family: var(--tipo-letra);
     font-size: var(--tamaño-titulo-secundario);
