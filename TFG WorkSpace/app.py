@@ -167,7 +167,7 @@ def puntuacion(equipo):
             break
         i += 1
     puestoEquilibrado = 21 - puesto
-    puntuacionFinal = puestoEquilibrado/20 * 0.25 + golesFavor/maximosGolesFavor * 0.20 - golesContra/maximosgolesContra * 0.20 + puntRacha/numPartidosJugadosUltimoMes * 0.35
+    puntuacionFinal = puestoEquilibrado/20 * 0.35 + golesFavor/maximosGolesFavor * 0.15 - golesContra/maximosgolesContra * 0.15 + puntRacha/numPartidosJugadosUltimoMes * 0.35
     return puntuacionFinal
 
 def rachaPersonalizada(equipo, fechaInicio, fechaFin):
@@ -219,15 +219,15 @@ def rachaPersonalizada(equipo, fechaInicio, fechaFin):
     diccionarioDatos =contenidoJSON['data']
     listaDatosPartidos = diccionarioDatos['match']
 
-    listaPartidos = listaDatosPartidos[0]
-    numPartidos = len(listaDatosPartidos)
+    listaPartidos = listaDatosPartidos
 
     racha = 0
     i = 0
     victorias = 0
     empates = 0
     derrotas = 0
-    while i<len(listaPartidos):
+    numPartidos = len(listaPartidos)
+    while i < numPartidos:
         resultadoTemporal = listaPartidos[i]['ft_score']
         golesLocal =  int(resultadoTemporal[0])
         golesVisitante =  int(resultadoTemporal[4])
@@ -247,7 +247,7 @@ def rachaPersonalizada(equipo, fechaInicio, fechaFin):
                 victorias += 1
             else: derrotas += 1
         i += 1
-    return racha, victorias, empates, derrotas, numPartidos  
+    return racha, victorias, empates, derrotas, numPartidos
 
 def puntuacionPersonalizada(equipo, numJornada, porcentajePuesto, porcentajeGolesFavor, porcentajeGolesContra):
     with open(f'./TFG WorkSpace/jornadas/jornada{numJornada}.json') as file:
@@ -301,7 +301,7 @@ def funcPredecir():
         return render_template('templateError.html', error = f'ERROR',
                                texto_de_error = f'Has elegido dos veces el mismo equipo, vuelve a elegir para predecir el partido!')
     else:
-        if puntosAbsolutos <= 0.10:
+        if puntosAbsolutos <= 0.15:
             return render_template('templatePrediccion.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} terminará en EMPATE.',
                                 puntos_local = f'La puntuación del {equipoLocal} es: {puntuacionLocal}',
                                 puntos_visitante = f'La puntuación del {equipoVisitante} es: {puntuacionVisitante}')
@@ -338,10 +338,10 @@ def funcPredecirPersonalizada():
     puntuacionVisitante = puntuacionPersonalizada(equipoVisitante,numJornada, porcentajePuesto, porcentajeGolesFavor, porcentajeGolesContra)
 
     if porcentajeRacha != 0:
-        rachaLocal = rachaPersonalizada(equipoLocal, fechaInicio, fechaFin)[0]        
-        rachaVisitante = rachaPersonalizada(equipoVisitante, fechaInicio, fechaFin)[0]
-        numPartidosLocal = rachaPersonalizada(equipoLocal, fechaInicio, fechaFin)[4] 
-        numPartidosVisitante = rachaPersonalizada(equipoVisitante, fechaInicio, fechaFin)[4]
+        rachaLocal = float(rachaPersonalizada(equipoLocal, fechaInicio, fechaFin)[0])        
+        rachaVisitante = float(rachaPersonalizada(equipoVisitante, fechaInicio, fechaFin)[0])
+        numPartidosLocal = int(rachaPersonalizada(equipoLocal, fechaInicio, fechaFin)[4]) 
+        numPartidosVisitante = int(rachaPersonalizada(equipoVisitante, fechaInicio, fechaFin)[4])
 
         rachaLocalFinal = rachaLocal/numPartidosLocal * porcentajeRacha/100
         rachaVisitanteFinal = rachaVisitante/numPartidosVisitante * porcentajeRacha/100
