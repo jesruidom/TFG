@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <title>Web TFG</title>
         <link rel="icon" type="image/png" href="{{url_for('static', filename='images/logoBurdeos.png')}}">
-        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/templateRachaPersonalizada.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/templatePrediccionPersonalizada.css')}}">
     </head>
 
     <body>
-        
+
         <div class="zona-cabecera">
             <div class="logo"> <a href="http://127.0.0.1:5000"><img  class="logo" src="{{url_for('static', filename='images/logoBurdeos.png')}}" alt="Logo"></a></div>
             
@@ -37,53 +37,57 @@
 
         <div class="zona-informacion">
 
-            <h1 class="titulo">Calculadora de racha por equipos</h1>
-            <p class="texto-informacion">Introduce el nombre del equipo que quieras consultar y haz click en el boton "Calcular la racha" 
-                para ver la racha en el último mes del equipo</p>
+            <h1 class="titulo">Calculadora de racha personalizada</h1>
+            <p class="texto-informacion">Introduce el nombre del equipo que quieras consultar y elige el intervalo de fechas entre los que quieras obtener la racha.
+                Haz click en el boton "Calcular la racha" para ver la racha en el último mes del equipo 
+            </p>
 
-                <form class="zona-formulario" action="/racha-personalizada-calculada" method="post">
-                    <div class="zona-options-equipos">
-                        <div class="content-select">
-                            <label for="equipo"></label>
-                            <select name="equipoLocal" id="equipo" required="required">
-                                <option disabled selected>Equipo local</option>
-                                <option value="Almeria">Almeria</option>
-                                <option value="Athletic Bilbao">Athletic Bilbao</option>
-                                <option value="Atletico Madrid">Atletico Madrid</option>
-                                <option value="Barcelona">Barcelona</option>
-                                <option value="Cadiz">Cadiz</option>
-                                <option value="Celta Vigo">Celta Vigo</option>
-                                <option value="Elche">Elche</option>
-                                <option value="Espanyol">Espanyol</option>
-                                <option value="Getafe">Getafe</option>
-                                <option value="Girona">Girona</option>
-                                <option value="Mallorca">Mallorca</option>
-                                <option value="Osasuna">Osasuna</option>
-                                <option value="Rayo Vallecano">Rayo Vallecano</option>
-                                <option value="Real Betis">Real Betis</option>
-                                <option value="Real Madrid">Real Madrid</option>
-                                <option value="Real Sociedad">Real Sociedad</option>
-                                <option value="Sevilla">Sevilla</option>
-                                <option value="Valencia">Valencia</option>
-                                <option value="Valladolid">Valladolid</option>
-                                <option value="Villarreal">Villarreal</option>
-                            </select> 
-                            <i></i>
-                        </div>
-                        
-                    </div>                    
+            <form  class="zona-formulario" action="/racha-personalizada-calculada" method="post">
 
-                    <div class="zona-fechas">
-                        <label id="fecha">Fecha inicio de la racha:</label>
-                        <input type="date" placeholder="% Puesto" id="parametros" name="fecha-inicio">
-                        <label id="fecha">Fecha fin de la racha:</label>
-                        <input type="date" placeholder="% Puesto" id="parametros" name="fecha-fin">
-                    </div>
-                
-                    <div class="boton-predecir">
-                        <button type="submit" class="btn-acciones">Calcular racha personalizada</button>
+                <div class="zona-options-equipos">    
+                    <div class="content-select">
+                        <label for="equipo"></label>
+                        <select name="equipoLocal" id="equipo" required="required">
+                            <option disabled selected>Equipo local</option>
+                            <option value="Almeria">Almeria</option>
+                            <option value="Athletic Bilbao">Athletic Bilbao</option>
+                            <option value="Atletico Madrid">Atletico Madrid</option>
+                            <option value="Barcelona">Barcelona</option>
+                            <option value="Cadiz">Cadiz</option>
+                            <option value="Celta Vigo">Celta Vigo</option>
+                            <option value="Elche">Elche</option>
+                            <option value="Espanyol">Espanyol</option>
+                            <option value="Getafe">Getafe</option>
+                            <option value="Girona">Girona</option>
+                            <option value="Mallorca">Mallorca</option>
+                            <option value="Osasuna">Osasuna</option>
+                            <option value="Rayo Vallecano">Rayo Vallecano</option>
+                            <option value="Real Betis">Real Betis</option>
+                            <option value="Real Madrid">Real Madrid</option>
+                            <option value="Real Sociedad">Real Sociedad</option>
+                            <option value="Sevilla">Sevilla</option>
+                            <option value="Valencia">Valencia</option>
+                            <option value="Valladolid">Valladolid</option>
+                            <option value="Villarreal">Villarreal</option>
+                        </select> 
+                        <i></i>
                     </div> 
-                </form>
+                </div>                
+                
+
+                <div class="zona-fechas">
+                    <label id="fecha">Fecha inicio de la racha:</label>
+                    <input type="date" placeholder="% Puesto" id="parametros" name="fecha-inicio">
+                    <label id="fecha">Fecha fin de la racha:</label>
+                    <input type="date" placeholder="% Puesto" id="parametros" name="fecha-fin">
+                </div>
+                
+                <div class="boton-predecir">
+                    <button type="submit" class="btn-acciones">Calcular la racha</button>
+                </div>               
+
+            </form>
+            
 
             <div class="resultado">
                 <p>{{racha_texto}}</p>
@@ -91,17 +95,16 @@
             </div>
 
             <div class="botones-abajo">
-                <form action="/racha-personalizada" method="post">
-                    <button type="submit" class="btn-acciones">Calcular otra racha personalizada</button>
-                </form>
-
                 <form action="/predecir-personalizado" method="post">
-                    <button type="submit" class="btn-acciones">Predecir partido personalizado</button>
+                    <button type="submit" class="btn-acciones">Predecir otro partido personalizado</button>
+                </form>
+                <form action="/racha-personalizada" method="post">
+                    <button type="submit" class="btn-acciones">Ir a calcular racha personalizada</button>
                 </form>
             </div>
-
-            
         </div>
+
+        
         
     </body>
 </html>
