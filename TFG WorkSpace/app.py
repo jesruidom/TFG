@@ -166,8 +166,9 @@ def puntuacion(equipo):
             golesContra = int(listaClasificacion[i].get('goals_conceded'))
             break
         i += 1
-    puestoEquilibrado = 21 - puesto
-    puntuacionFinal = puestoEquilibrado/20 * 0.35 + golesFavor/maximosGolesFavor * 0.15 - golesContra/maximosgolesContra * 0.15 + puntRacha/numPartidosJugadosUltimoMes * 0.35
+    puestoEquilibrado = 20 - puesto
+    golesContraEquilibrado = 1 - golesContra/maximosgolesContra
+    puntuacionFinal = puestoEquilibrado/19 * 0.35 + golesFavor/maximosGolesFavor * 0.15 + golesContraEquilibrado * 0.15 + puntRacha/numPartidosJugadosUltimoMes * 0.35
     return puntuacionFinal
 
 def rachaPersonalizada(equipo, fechaInicio, fechaFin):
@@ -249,7 +250,7 @@ def rachaPersonalizada(equipo, fechaInicio, fechaFin):
         i += 1
     return racha, victorias, empates, derrotas, numPartidos
 
-def puntuacionPersonalizada(equipo, numJornada, porcentajePuesto, porcentajeGolesFavor, porcentajeGolesContra):
+def puntuacionPersonalizada(equipo, numJornada, porcentajePuesto, porcentajeGolesFavor, porcentajeGolesContra, porcentajeRacha):
     with open(f'./TFG WorkSpace/jornadas/jornada{numJornada}.json') as file:
         i = 0
         dataPersonalizado = json.load(file)    
@@ -266,8 +267,10 @@ def puntuacionPersonalizada(equipo, numJornada, porcentajePuesto, porcentajeGole
                 golesContra = int(listaClasificacionPersonalizada[i].get('goals_conceded'))
                 break
             i += 1    
-    puestoEquilibrado = 21 - puesto
-    puntuacionFinal = puestoEquilibrado/20 * porcentajePuesto/100 + golesFavor/maximosGolesFavor * porcentajeGolesFavor/100 - golesContra/maximosgolesContra * porcentajeGolesContra/100 #Hay que eliminar la racha ya que no se puede obtener de estos datos
+    puestoEquilibrado = 20 - puesto
+    golesContraEquilibrado = 1 - golesContra/maximosgolesContra
+    sumaPorcentaje = porcentajePuesto + porcentajeGolesFavor + porcentajeGolesContra + porcentajeRacha
+    puntuacionFinal = puestoEquilibrado/19 * porcentajePuesto/sumaPorcentaje + golesFavor/maximosGolesFavor * porcentajeGolesFavor/sumaPorcentaje + golesContraEquilibrado * porcentajeGolesContra/sumaPorcentaje #Hay que eliminar la racha ya que no se puede obtener de estos datos
     return puntuacionFinal
 
 ############################################## FIN SECCION #####################################################
@@ -334,8 +337,8 @@ def funcPredecirPersonalizada():
     fechaInicio = request.form['fecha-inicio']
     fechaFin = request.form['fecha-fin']
 
-    puntuacionLocal = puntuacionPersonalizada(equipoLocal, numJornada, porcentajePuesto, porcentajeGolesFavor, porcentajeGolesContra) + 0.15 # Hay que añadirle algun punto por jugar de local
-    puntuacionVisitante = puntuacionPersonalizada(equipoVisitante,numJornada, porcentajePuesto, porcentajeGolesFavor, porcentajeGolesContra)
+    puntuacionLocal = puntuacionPersonalizada(equipoLocal, numJornada, porcentajePuesto, porcentajeGolesFavor, porcentajeGolesContra, porcentajeRacha) + 0.15 # Hay que añadirle algun punto por jugar de local
+    puntuacionVisitante = puntuacionPersonalizada(equipoVisitante,numJornada, porcentajePuesto, porcentajeGolesFavor, porcentajeGolesContra, porcentajeRacha)
 
     if porcentajeRacha != 0:
         rachaLocal = float(rachaPersonalizada(equipoLocal, fechaInicio, fechaFin)[0])        
@@ -343,8 +346,9 @@ def funcPredecirPersonalizada():
         numPartidosLocal = int(rachaPersonalizada(equipoLocal, fechaInicio, fechaFin)[4]) 
         numPartidosVisitante = int(rachaPersonalizada(equipoVisitante, fechaInicio, fechaFin)[4])
 
-        rachaLocalFinal = rachaLocal/numPartidosLocal * porcentajeRacha/100
-        rachaVisitanteFinal = rachaVisitante/numPartidosVisitante * porcentajeRacha/100
+        sumaPorcentaje = porcentajePuesto + porcentajeGolesFavor + porcentajeGolesContra + porcentajeRacha
+        rachaLocalFinal = rachaLocal/numPartidosLocal * porcentajeRacha/sumaPorcentaje
+        rachaVisitanteFinal = rachaVisitante/numPartidosVisitante * porcentajeRacha/sumaPorcentaje
 
         puntuacionLocal += rachaLocalFinal
         puntuacionVisitante += rachaVisitanteFinal
@@ -380,7 +384,7 @@ def calculaRacha():
     ultimosPartidos = obtenPartidos(equipo)
     rachaLocal = creaRacha(equipo,ultimosPartidos)
     return render_template('templateRacha.html', racha_texto = f'El {equipo} ha jugado {len(ultimosPartidos)} partidos en el último mes, ha ganado {rachaLocal[1]}, empatado {rachaLocal[2]} y perdido {rachaLocal[3]}.', 
-        racha_texto2 = f'Por tanto, ha obteniendo una puntuación de {rachaLocal[0]}.')
+        racha_texto2 = f'Por tanto, ha obteniendo una puntuación de {rachaLocal[0]} sobre {len(ultimosPartidos)}.')
 
 @app.route("/racha-personalizada", methods=['POST'])
 def paginaRachaPersonalizada():
@@ -399,7 +403,7 @@ def calculaRachaPersonalizada():
     numPartidos = int(rachaPersonalizada(equipo, fechaInicio, fechaFin)[4])
 
     return render_template('templateRachaPersonalizada.html', racha_texto = f'El {equipo} ha jugado {numPartidos} partidos desde el {fechaInicio} hasta el {fechaFin} y ha ganado {victorias}, empatado {empates} y perdido {derrotas}.', 
-        racha_texto2 = f'Por tanto, ha obteniendo una puntuación de {racha}.')
+        racha_texto2 = f'Por tanto, ha obteniendo una puntuación de {racha} sobre {numPartidos}.')
 
 @app.route("/documentacion", methods=['POST'])
 def paginaDocumentacion():

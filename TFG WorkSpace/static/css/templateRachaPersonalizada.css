@@ -1,7 +1,7 @@
 :root {
   --color-cabecera: hsl(3, 0%, 10%);
   --dorado-botones: hsl(46, 65%, 52%);
-  --burdeos-botones: hsl(0, 100%, 27%);
+  --azul-botones: hsl(0, 100%, 27%);
   /*--azul-botones: hsl(196, 80%, 52%);*/
   --dorado-fonodo-opacidad: hsla(46, 65%, 52%, 0.6);
   --rojo-error: hsl(0, 100%, 50%);
@@ -66,8 +66,8 @@ html, body{
 }
 
 .btn-outline-success:hover{
+  background-color: var(--azul-botones);
   color: white;
-  background-color: var(--burdeos-botones);
 }
 
 /*================================= FINAL ZONA MENU =================================*/
@@ -96,13 +96,16 @@ html, body{
 
 .texto-informacion{
   margin: 2%;
-  margin-top: -6%;
+  /*margin-top: -7%;*/
+  margin-top: -7rem;
+
   font-family: var(--tipo-letra);
   font-size: var(--tamaño-texto);
-  /*text-align: center;*/
+  text-align: center;
 }
 
 .zona-formulario{
+  margin-top: -4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -112,6 +115,14 @@ html, body{
 .zona-options-equipos{
   display: flex;
   justify-content: center;
+}
+
+#parametros{
+  background-color: var(--verde-color-opciones);
+  height: 40px;
+  width: 120px;
+  border: 2px solid var(--dorado-botones);
+  border-radius: 6px;
 }
 
 .zona-fechas{
@@ -131,6 +142,8 @@ html, body{
 }
 
 .resultado{
+  margin-top: -3.5rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -138,15 +151,33 @@ html, body{
   font-size: var(--tamaño-texto);
 }
 
+.puntuacion_local{
+  display: flex;;
+  justify-content: flex-end;
+  margin-right: 2%;
+
+  font-family: var(--tipo-letra);
+}
+
+.puntuacion_visitante{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2%;
+  margin-top: -5%;
+
+  font-family: var(--tipo-letra);
+}
+
 .botones-abajo{
   display: flex;
-  margin: 2%;  
+  margin: 2%;
+  margin-top: -8%;  
   gap: 0.5rem;
 }
 
 .btn-acciones{
   color: white;
-  background-color: var(--burdeos-botones);
+  background-color: var(--azul-botones);
 
   padding: 10px 20px;
   text-align: center;
@@ -159,8 +190,8 @@ html, body{
 }
 
 .btn-acciones:hover{
-  color: white;
   border: 2px solid var(--verde-borde-botones-seleccionados);
+  color: white;
 }
 
 /*################################################################################################################
@@ -225,3 +256,4 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
 .content-select:hover i{
 	margin-top: 3px;
 }
+
