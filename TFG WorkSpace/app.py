@@ -149,7 +149,8 @@ def creaRacha(equipo, listaPartidos):
         i += 1
     return racha, victorias, empates, derrotas
 
-#Funcion que genera la puntuación de cada equipo segun los puntos en la clasificacion, los goles a favor, goles en contra y la puntuacion de su racha
+#Funcion que genera la puntuación de cada equipo segun los puntos en la clasificacion, los goles a favor, goles en contra y la 
+# puntuacion de su racha
 def puntuacion(equipo):
     i = 0
     listaClasificacion = extraeDatos()
