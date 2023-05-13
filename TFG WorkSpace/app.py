@@ -4,8 +4,8 @@ import json
 from datetime import date
 
 fecha = date.today()
-API_key = 'bjfOaG7SP1Sz15rk'
-API_secret = 'NlK2UGKRKBUQrbUCv9rGQyyFAqfBwHVk'
+API_key = 'YbBUqXdVgGVkD2xO'
+API_secret = 'VtkLgwLbLZUdiuogFZb6Wo1d5XxIZ5xV'
 
 ##################################################################################################################
 #SECCIÓN EN LA QUE SE EXTRAEN Y SE MODIFICAN LOS DATOS DE LA CLASIFICACIÓN DE LA API PARA TRATARLOS ADECUADAMENTE#
@@ -304,7 +304,7 @@ def funcPredecir():
         return render_template('templateError.html', error = f'ERROR',
                                texto_de_error = f'Has elegido dos veces el mismo equipo, vuelve a elegir para predecir el partido!')
     else:
-        if puntosAbsolutos <= 0.15:
+        if puntosAbsolutos <= 0.10:
             return render_template('templatePrediccion.html', puntos_texto = f'El partido entre el {equipoLocal} y el {equipoVisitante} terminará en EMPATE.',
                                 puntos_local = f'La puntuación del {equipoLocal} es: {puntuacionLocal}',
                                 puntos_visitante = f'La puntuación del {equipoVisitante} es: {puntuacionVisitante}')
