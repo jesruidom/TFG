@@ -98,9 +98,7 @@ html, body{
 }
 
 .zona-informacion div{
-  margin-top: 8%;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin: 2%;
 
   font-family: var(--tipo-letra);
   font-size: var(--tamaño-texto);
